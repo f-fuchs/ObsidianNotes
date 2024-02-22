@@ -63,9 +63,9 @@ This gives the self-attention layer some controllable parameters, and allows it 
 ```
 
 
-### 2) Scaling the Dot Product
+### 2. Scaling the Dot Product
 
-
+The softmax function can be sensitive to very large input values. These kill the gradient, and slow down learning, or cause it to stop altogether. Since the average value of the dot product grows with the embedding dimension k, it helps to scale the dot product back a little to stop the inputs to the softmax function from growing too large:
 
 
 
