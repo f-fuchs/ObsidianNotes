@@ -61,6 +61,14 @@ This gives the self-attention layer some controllable parameters, and allows it 
 ![[self-attention.svg]]
 ![[key-query-value.svg]]
 ```
+
+
+### 2) Scaling the Dot Product
+
+
+
+
+
 ## Resources
 
 - Original Paper Attention is all you need: https://arxiv.org/pdf/1706.03762.pdf
