@@ -58,11 +58,9 @@ w_{ij} = \frac{e^{w_{ij}^{′}}}{\sum_{j=1}^{t} e^{w_{ij}^{′}}}
 $$
 This gives the self-attention layer some controllable parameters, and allows it to modify the incoming vectors to suit the three roles they must play.
 ```image-layout-a
-![[key-query-value.svg|100]]
-![[self-attention.svg|100]]
+![[key-query-value.svg]]
+![[self-attention.svg]]
 ```
-
-
 ## Resources
 
 - Original Paper Attention is all you need: https://arxiv.org/pdf/1706.03762.pdf
