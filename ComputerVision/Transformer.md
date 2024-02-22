@@ -45,12 +45,24 @@ Every input vector $\vec{𝐱_i}$ is used in three different ways in the self at
 - It is used as part of the weighted sum to compute each output vector once the weights have been established.
 These roles are often called the **query**, the **key** and the **value**. In the basic self-attention we've seen so far, each input vector must play all three roles. We make its life a little easier by deriving new vectors for each role, by applying a linear transformation to the original input vector. In other words, we add three $k×k$ weight matrices $W_q$, $W_k$,$W_v$ and compute three linear transformations of each $\vec{𝐱_i}$, for the three different parts of the self attention:
 $$
-\vec{q_i}= W_q \times $\vec{𝐱_i}$
+\begin{aligned}
+\vec{q_i}&= W_q \times \vec{𝐱_i} \qquad
+\vec{k_i} = W_k \times \vec{𝐱_i} \qquad
+\vec{v_i} = W_v \times \vec{𝐱_i}
 \\
-\vec{k_i}= W_k \times $\vec{𝐱_i}$
+w_{ij}^{′} &= \vec{q_i}^T \vec{k_j} \qquad
+w_{ij} = \frac{e^{w_{ij}^{′}}}{\sum_{j=1}^{t} e^{w_{ij}^{′}}}
 \\
-\vec{v_i}= W_v \times $\vec{𝐱_i}$
+\vec{𝐲_i}&=\sum_{j=1}^{t} w_{ij} \vec{v_j}
+\end{aligned}
 $$
+This gives the self-attention layer some controllable parameters, and allows it to modify the incoming vectors to suit the three roles they must play.
+```image-layout-a
+![[key-query-value.svg|100]]
+![[self-attention.svg|100]]
+```
+
+
 ## Resources
 
 - Original Paper Attention is all you need: https://arxiv.org/pdf/1706.03762.pdf
