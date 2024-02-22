@@ -1,40 +1,23 @@
-## Self-Attention
+## Basic Self-Attention
 
 ### Theory
 
-The fundamental operation of any transformer architecture is the *self-attention* operation.
+The fundamental operation of any transformer architecture is the *self-attention* operation.  Self-attention is a sequence-to-sequence operation: a sequence of vectors goes in, and a sequence of vectors comes out. Let’s call the input vectors $\vec{𝐱_1},\vec{𝐱_2},…,\vec{𝐱_t}$ and the corresponding output vectors $\vec{y_1},\vec{y_2},…,\vec{y_t}$. The vectors all have dimension $k$.
 
-We'll explain where the name "self-attention" comes from later. For now, don't read too much in to it.
-
-Self-attention is a sequence-to-sequence operation: a sequence of vectors goes in, and a sequence of vectors comes out. Let’s call the input vectors $\vec{𝐱_1},\vec{𝐱_2},…,\vec{𝐱_t}$ and the corresponding output vectors $\vec{y_1},\vec{y_2},…,\vec{y_t}$. The vectors all have dimension $k$.
-
-To produce output vector $\vec{𝐲_i}$, the self attention operation simply takes *a weighted average over all the input vectors*
-
-$$
-\vec{𝐲_i}=\sum_{j=1}^{k} w_{ij} \vec{𝐱_j}
-\text{.}
-$$
-
-
-Where the weights sum to one over all $j$. The weight $w_{ij}$ is not a parameter, as in a normal neural net, but it is *derived* from a function over $\vec{𝐱_i}$ and $\vec{𝐱_j}$. The simplest option for this function is the dot product:
-
+To produce output vector $\vec{𝐲_i}$, the self attention operation simply takes *a weighted average over all the input vectors* $\vec{𝐲_i}=\sum_{j=1}^{t} w_{ij} \vec{𝐱_j}$. Where the weights sum to one over all $j$. The weight $w_{ij}$ is not a parameter, as in a normal neural net, but it is *derived* from a function over $\vec{𝐱_i}$ and $\vec{𝐱_j}$. The simplest option for this function is the dot product:
 $$
 w_{ij}^{′}=\vec{𝐱_i}^T \vec{𝐱_j}= \sum_{l=1}^{k} 𝐱_{il} 𝐱_{jl}
 \text{.}
 $$
-
-
-Where $\vec{𝐱_i}$ is the input vector at the same position as the current output vector $\vec{𝐲_i}$. For the next output vector, we get an entirely new series of dot products, and a different weighted sum.
-
-The dot product gives us a value anywhere between negative and positive infinity, so we apply a *softmax* to map the values to $[0,1]$ and to ensure that they sum to $1$ over the whole sequence:
+Where $\vec{𝐱_i}$ is the input vector at the same position as the current output vector $\vec{𝐲_i}$. For the next output vector, we get an entirely new series of dot products, and a different weighted sum. The dot product gives us a value anywhere between negative and positive infinity, so we apply a *softmax* to map the values to $[0,1]$ and to ensure that they sum to $1$ over the whole sequence:
 $$
-w_{ij} = \frac{e^{w_{ij}^{′}}}{\sum_{j=1}^{k} e^{w_{ij}^{′}}}
+w_{ij} = \frac{e^{w_{ij}^{′}}}{\sum_{j=1}^{t} e^{w_{ij}^{′}}}
 \text{.}
 $$
 
 ![[self-attention.svg]]
 
-If we combine our sequence of vectors to a matrix $X=\begin{bmatrix} \vec{𝐱_1}^T \\ \vec{𝐱_2}^T \\ … \\ \vec{𝐱_t}^T \end{bmatrix}$ with dimension $(t, k)$ , we can calculate all weights by multiplying $X$ with its transpose $X^T$. Therefore the raw weight matrix $W^{′}=X \times X^T$ has dimension $(t, t)$ where $W^{′}_{ij}$ is the same as $w_{ij}^{′}$ defined above. Next we can rescale $W^{′}$ by applying the  *softmax* function *row-wise*.
+If we combine our sequence of vectors to a matrix $X=\begin{bmatrix} \vec{𝐱_1}^T \\ \vec{𝐱_2}^T \\ … \\ \vec{𝐱_t}^T \end{bmatrix}$ with dimension $(t, k)$ , we can calculate all weights by multiplying $X$ with its transpose $X^T$. Therefore the raw weight matrix $W^{′}=X \times X^T$ has dimension $(t, t)$ where $W^{′}_{ij}$ is the same as $w_{ij}^{′}$ defined above. Next we can rescale $W^{′}$ by applying the  *softmax* function *row-wise*. This is equivalent to the softmax above ($W_{ij} = \frac{e^{W_{ij}^{′}}}{\sum_{j=1}^{t} e^{W_{ij}^{′}}}$ ). Finally, to compute the output sequence $Y$, we just multiply the weight matrix $W$ by our input matrix $X$ ($Y=W \times X$).
 
 ### Intuition
 
@@ -50,10 +33,24 @@ This is the basic intuition behind self-attention. The dot product expresses how
 - There are no parameters (yet). What the basic self-attention actually does is entirely determined by whatever mechanism creates the input sequence. Upstream mechanisms, like an embedding layer, drive the self-attention by learning representations with particular dot products.
 - Self attention sees its input as a *set*, not a sequence. If we permute the input sequence, the output sequence will be exactly the same, except permuted also (i.e. self-attention is *permutation equivariant*). Therefore self-attention by itself actually *ignores* the sequential nature of the input.
 
+## Self-Attention in Transformers
 
-### Resources
-- https://peterbloem.nl/blog/transformers
+The actual self-attention used in modern transformers relies on three additional modifications.
 
+### 1. Queries, Keys and Values
+
+Every input vector $\vec{𝐱_i}$ is used in three different ways in the self attention operation:
+- It is compared to every other vector to establish the weights for its own output $\vec{y_i}$
+- It is compared to every other vector to establish the weights for the output of the j-th $\vec{y_j}$
+- It is used as part of the weighted sum to compute each output vector once the weights have been established.
+These roles are often called the **query**, the **key** and the **value**. In the basic self-attention we've seen so far, each input vector must play all three roles. We make its life a little easier by deriving new vectors for each role, by applying a linear transformation to the original input vector. In other words, we add three $k×k$ weight matrices $W_q$, $W_k$,$W_v$ and compute three linear transformations of each $\vec{𝐱_i}$, for the three different parts of the self attention:
+$$
+\vec{q_i}= W_q \times $\vec{𝐱_i}$
+\\
+\vec{k_i}= W_k \times $\vec{𝐱_i}$
+\\
+\vec{v_i}= W_v \times $\vec{𝐱_i}$
+$$
 ## Resources
 
 - Original Paper Attention is all you need: https://arxiv.org/pdf/1706.03762.pdf
