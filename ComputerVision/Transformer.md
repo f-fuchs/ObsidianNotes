@@ -78,6 +78,8 @@ Finally, we must account for the fact that a word can mean different things to d
 In a single self-attention operation, all this information just gets summed together. The inputs $\vec{x}_{mary}$ and $\vec{x}_{susan}$ can influence the output $\vec{y}_{gave}$ by different amounts, depending on their dot-product with $\vec{x}_{gave}$, but they can’t influence it _in different ways_. If, for instance, we want the information about who gave the roses and who received them to end up in different parts of $\vec{y}_{gave}$, we need a little more flexibility.
 
 We can give the self attention greater power of discrimination, by combining several self-attention mechanisms (which we'll index with $h$), each with different matrices $W^h_q$, $W^h_k$, $W^h_v$. These are called *attention heads*. For input $\vec{x}_{i}$ each attention head produces a different output vector $\vec{y}_{i}^{h}$. We concatenate these, and pass them through a linear transformation to reduce the dimension back to $k$.
+
+The simplest way to understand multi-head self-attention is to see it as a small number of copies of the self-attention mechanism applied in parallel, each with their own key, value and query transformation. This works well, but for $h$ heads, the self-attention operation is $h$ times as slow.
 ## Resources
 
 - Original Paper Attention is all you need: https://arxiv.org/pdf/1706.03762.pdf
