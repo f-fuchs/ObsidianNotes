@@ -65,10 +65,19 @@ This gives the self-attention layer some controllable parameters, and allows it 
 
 ### 2. Scaling the Dot Product
 
-The softmax function can be sensitive to very large input values. These kill the gradient, and slow down learning, or cause it to stop altogether. Since the average value of the dot product grows with the embedding dimension k, it helps to scale the dot product back a little to stop the inputs to the softmax function from growing too large:
+The softmax function can be sensitive to very large input values. These kill the gradient, and slow down learning, or cause it to stop altogether, see [[Vanishing Gradient Problem]].  Since the average value of the dot product grows with the embedding dimension $k$, it helps to scale the dot product back a little to stop the inputs to the softmax function from growing too large:
 
+$$
+w_{ij}^{′} = \frac{\vec{q_i}^T \vec{k_j}}{\sqrt{k}} \qquad
+w_{ij} = \frac{e^{w_{ij}^{′}}}{\sum_{j=1}^{t} e^{w_{ij}^{′}}}
+$$
+### 3. Multi-head Attention
 
+Finally, we must account for the fact that a word can mean different things to different neighbors. Consider the following example: mary,gave,roses,to,susan. We see that the word *gave* has different relations to different parts of the sentence: *mary* expresses who’s doing the giving, *roses* expresses what’s being given, and *susan* expresses who the recipient is.
 
+In a single self-attention operation, all this information just gets summed together. The inputs $\vec{x}_{mary}$ and $\vec{x}_{susan}$ can influence the output $\vec{y}_{gave}$ by different amounts, depending on their dot-product with $\vec{x}_{gave}$, but they can’t influence it _in different ways_. If, for instance, we want the information about who gave the roses and who received them to end up in different parts of $\vec{y}_{gave}$, we need a little more flexibility.
+
+We can give the self attention greater power of discrimination, by combining several self-attention mechanisms (which we'll index with $h$), each with different matrices $W^h_q$, $W^h_k$, $W^h_v$. These are called *attention heads*. For input $\vec{x}_{i}$ each attention head produces a different output vector $\vec{y}_{i}^{h}$. We concatenate these, and pass them through a linear transformation to reduce the dimension back to $k$.
 ## Resources
 
 - Original Paper Attention is all you need: https://arxiv.org/pdf/1706.03762.pdf
