@@ -80,6 +80,9 @@ In a single self-attention operation, all this information just gets summed toge
 We can give the self attention greater power of discrimination, by combining several self-attention mechanisms (which we'll index with $h$), each with different matrices $W^h_q$, $W^h_k$, $W^h_v$. These are called *attention heads*. For input $\vec{x}_{i}$ each attention head produces a different output vector $\vec{y}_{i}^{h}$. We concatenate these, and pass them through a linear transformation to reduce the dimension back to $k$.
 
 The simplest way to understand multi-head self-attention is to see it as a small number of copies of the self-attention mechanism applied in parallel, each with their own key, value and query transformation. This works well, but for $h$ heads, the self-attention operation is $h$ times as slow.
+
+It turns out we can have our cake and eat it too: there is a way to implement multi-head self-attention so that it is roughly as fast as the single-head version, but we still get the benefit of having different self-attention operations in parallel. To accomplish this, each head receives low-dimensional **keys**, **queries** and **values**. If the input vector has $k=256$ dimensions, and we have $h=4$ attention heads, we multiply the input vectors by a $256×64$ matrix to project them down to a sequence of $64$ dimensional vectors. For every head, we do this 3 times: for the **keys**, the **queries** and the **values**.
+![[multi-head.svg]]
 ## Resources
 
 - Original Paper Attention is all you need: https://arxiv.org/pdf/1706.03762.pdf
