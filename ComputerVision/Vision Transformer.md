@@ -2,12 +2,9 @@ The standard [[Transformer]] receives as input a 1D sequence of token embeddings
 
 ### Classification
 
-Similar to BERT’s [class] token, the original Vision Transformer prepends a learnable embedding to the sequence of embedded patches ($z^0_0 = x_{class}$), whose state at the output of the Transformer encoder ($z^0_L$) serves as the image representation $y$. Both during pre-training and fine-tuning, a classification head is attached to $z^0_L$. (*Using a “blank slate” token as the sole input to a classification head pushes the transformer to learn to encode a “general representation” of the entire image into that embedding. The model must do this to enable accurate classifier predictions.*) The classification head is implemented by a [[Feedforward Neural Network (FNN)#Multilayer Perceptron (MLP)|MLP]] with one hidden layer at pre-training time and by a single linear layer at fine-tuning time.
+Similar to BERT’s [class] token, the original Vision Transformer prepends a learnable embedding to the sequence of embedded patches ($z^0_0 = x_{class}$), whose state at the output of the Transformer encoder ($z^0_L$) serves as the image representation $y$. Both during pre-training and fine-tuning, a classification head is attached to $z^0_L$. (*Using a “blank slate” token as the sole input to a classification head pushes the transformer to learn to encode a “general representation” of the entire image into that embedding. The model must do this to enable accurate classifier predictions.*) The classification head is implemented by a [[Feedforward Neural Network (FNN)#Multilayer Perceptron (MLP)|MLP]] with one hidden layer at pre-training time and by a single linear layer at fine-tuning time. 
 
-Position embeddings are added to the patch embeddings to retain positional information. We use
-standard learnable 1D position embeddings, since we have not observed significant performance
-gains from using more advanced 2D-aware position embeddings (Appendix D.4). The resulting
-sequence of embedding vectors serves as input to the encoder.
+Position embeddings are added to the patch embeddings to retain positional information. The original paper uses standard learnable 1D position embeddings, since they have not observed significant performance gains from using more advanced 2D-aware position embeddings. The resulting sequence of embedding vectors serves as input to the encoder.
 
 ![[vision-transformer.svg|700]]
 ## Resources
