@@ -8,12 +8,11 @@ Position embeddings are added to the patch embeddings to retain positional infor
 
 ![[vision-transformer.svg|700]]
 ## Resources
-
 ### Used
-- 
-### Interesting other resources
 - Paper:
 	- https://arxiv.org/pdf/2010.11929.pdf
+### Interesting other resources
+- Paper:
 - GitHub:
 	- https://github.com/dk-liang/Awesome-Visual-Transformer
 - Tutorials:
