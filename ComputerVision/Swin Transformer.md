@@ -7,13 +7,14 @@ An overview of the architecture is shown in the image above. Similar to the [[Vi
 
 The [[Transformer|standard Transformer architecture]] and its [[Vision Transformer|adaptation for image classification]] both conduct global self attention, where the relationships between a token and all other tokens are computed. The global computation leads to quadratic complexity with respect to the number of tokens, making it unsuitable for many vision problems requiring an immense set of tokens for dense prediction or to represent a high-resolution image.
 
-An alternative is to compute self-attention within local windows. The windows are arranged to evenly partition the image in a non-overlapping manner. Supposing each window contains $M \times M$ patches, the computational complexity of a global multi-head self attention module (MSA) and a window based one (W-MSA) on an image of $H × W$ patches (*each pixel is one patch*) are:
+An alternative is to compute self-attention within local windows. The windows are arranged to evenly partition the image in a non-overlapping manner. Supposing each window contains $M \times M$ patches, the computational complexity of a global multi-head self attention module (MSA) and a window based one (W-MSA) on an image of $N$ patches are (*the first part $4ND^2$ comes from the three linear transformation of the input to key, query and value plus the output projection, the latter part *):
 $$
 \begin{aligned}
-\Omega(MSA) &= 4HWC^2 + 2(HW)^2C \\
-
+\Omega(MSA) &= 4ND^2 + 2N^2D \\
+\Omega(W-MSA) &= 4ND^2 + 2M^2ND
 \end{aligned}
 $$
+where the former is quadratic to number of patches $N$, and the latter is linear when $M$ is fixed (set to 7 by default). Global self-attention computation is generally unaffordable for a large number of patches, while the window based self-attention is scalable.
 
 
 ![[SwinTransformer_hierarchical_featue_maps.jpg|700]]
