@@ -16,6 +16,21 @@ $$
 $$
 where the former is quadratic to number of patches $N$, and the latter is linear when $M$ is fixed (set to 7 by default). Global self-attention computation is generally unaffordable for a large number of patches, while the window based self-attention is scalable.
 
+The window-based self-attention module lacks connections across windows, which limits its modeling power. To introduce cross-window connections while maintaining the efficient computation of non-overlapping windows, Swin Transformer use a shifted window partitioning approach which alternates between two partitioning configurations in consecutive Swin Transformer blocks.
+
+![[SwinTransformer_shifted_window.jpg|700]]
+
+As illustrated in the image above, the first module uses a regular window partitioning strategy which starts from the top-left pixel, and the $8 × 8$ feature map is evenly partitioned into
+$2 × 2$ windows of size $4 × 4$ ($M = 4$). Then, the next module adopts a windowing configuration that is shifted from that of the preceding layer, by displacing the windows by ($|\frac{M}{2}|$, $|\frac{M}{2}|$) pixels from the regularly partitioned windows
+
+Instead of adding linear embeddings to the input, Swin Transformer use relative position bias when computing self-attention,
+
+$$
+Attention(Q, K, V ) = SoftMax\left(\frac{Q \times K^T}{\sqrt{d}} + B \right) \times V
+$$
+where $Q, K, V \in \mathbb{R}^{M^2 \times d}$ are the query, key and value matrices; $d$ is the query/key dimension, and $M^2$ is the number of patches in a window and $B \in \mathbb{R}^{M^2 \times M^2}$.
+
 
 ![[SwinTransformer_hierarchical_featue_maps.jpg|700]]
-![[SwinTransformer_shifted_window.jpg|700]]
+
+## Patch Merging
