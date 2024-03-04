@@ -30,7 +30,9 @@ Attention(Q, K, V ) = SoftMax\left(\frac{Q \times K^T}{\sqrt{d}} + B \right) \ti
 $$
 where $Q, K, V \in \mathbb{R}^{M^2 \times d}$ are the query, key and value matrices; $d$ is the query/key dimension, and $M^2$ is the number of patches in a window and $B \in \mathbb{R}^{M^2 \times M^2}$.
 
+## Patch Merging
+
+Between every stage Swin Transformer uses patch merging to produce a hierarchical representation of the features, see image below.
 
 ![[SwinTransformer_hierarchical_featue_maps.jpg|700]]
-
-## Patch Merging
+A patch merging layer concatenates the features of each group of $2 \times 2$ neighboring patches, and applies a linear layer on the $4C$-dimensional concatenated features to reduce the resolution to $2C$ ($2\times$ downsampling). Swin Transformer blocks are applied afterwards for feature transformation, with the resolution kept at $\frac{H}{8} \times \frac{H}{8}$. This first block of patch merging and feature transformation is denoted as “Stage 2”. The procedure is repeated twice, as “Stage 3” and “Stage 4”, with output resolutions of $\frac{H}{16} \times \frac{H}{16}$ and $\frac{H}{32} \times \frac{H}{32}$ , respectively.
