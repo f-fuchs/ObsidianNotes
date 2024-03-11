@@ -106,7 +106,74 @@ for n in range(N):
 print(f"{(output_instance-output_instance_hand).max()}")
 ```
 
+## Group Norm
 
+### 1 Group -> LayerNorm
+```run-python
+import torch
+
+N, C, H, W = 5, 3, 10, 10 
+# N = number of images in batch
+# C = number of channels
+# H = height of image
+# W = width of image
+
+# create random data
+data = torch.randn(N, C, H, W)
+
+# instance norm
+G = 1 # number of groups
+group_norm = torch.nn.GroupNorm(G, C, eps=0, affine=False)
+output_group = group_norm(data)
+
+# check mean and std of each channel separably per image
+group_size = C // G
+for n in range(N):
+	for c in range(0,C,group_size):
+		print(f"output_instance[{n}, {c}, :, :].mean()={output_instance[n, c:c+group_size, :, :].mean()}")
+		print(f"output_instance[{n}, {c}, :, :].std()={output_instance[n, c:c+group_size, :, :].std()}")
+
+# layer norm
+layer_norm = torch.nn.LayerNorm([C, H, W], eps=0, elementwise_affine=False)
+output_layer = layer_norm(data)
+
+print(f"{(output_group-output_layer).max()}")
+
+```
+
+### 3 Groups -> Instance Norm
+
+```run-python
+import torch
+
+N, C, H, W = 5, 3, 10, 10 
+# N = number of images in batch
+# C = number of channels
+# H = height of image
+# W = width of image
+
+# create random data
+data = torch.randn(N, C, H, W)
+
+# instance norm
+G = 3 # number of groups
+group_norm = torch.nn.GroupNorm(G, C, eps=0, affine=False)
+output_group = group_norm(data)
+
+# check mean and std of each channel separably per image
+group_size = C // G
+for n in range(N):
+	for c in range(0,C,group_size):
+		print(f"output_instance[{n}, {c}, :, :].mean()={output_instance[n, c:c+group_size, :, :].mean()}")
+		print(f"output_instance[{n}, {c}, :, :].std()={output_instance[n, c:c+group_size, :, :].std()}")
+
+# instance norm
+instance_norm = torch.nn.InstanceNorm2d(C, eps=0, momentum=0, affine=False)
+output_instance = instance_norm(data)
+
+print(f"{(output_group-output_instance).max()}")
+
+```
 ## Resources
 
 - YouTube Yannic Kilcher: https://www.youtube.com/watch?v=l_3zj6HeWUE (9:00-21:00)
