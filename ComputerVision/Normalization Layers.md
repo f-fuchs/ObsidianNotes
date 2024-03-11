@@ -96,14 +96,18 @@ for n in range(N):
 		print(f"output_instance[{n}, {c}, :, :].std()={output_instance[n, c, :, :].std()}")
 
 # calculate batch norm by hand
-data_mean_instance = torch.mean(data, dim=(2, 3))
-print(f"{data_mean_instance.shape}")
-data_std_instance = torch.std(data, dim=(2, 3), correction=0)
-print(f"{data_std_instance.shape}")
 output_instance_hand = torch.zeros_like(data)
-for c in range(C):
-	output_batch_hand[:, c, :, :] = (data[:, c, :, :]-data_mean_batch[c])/data_std_batch[c]
+for n in range(N):
+	for c in range(C):
+		output_instance_hand[n, c, :, :] = data[n, c, :, :] - data[n, c, :, :].mean()
+		output_instance_hand[n, c, :, :] /= data[n, c, :, :].std(correction=0)
 
 # compare batch norm to batch norm by hand
-print(f"{(output_batch-output_batch_hand).max()}")
+print(f"{(output_instance-output_instance_hand).max()}")
 ```
+
+
+## Resources
+
+- YouTube Yannic Kilcher: https://www.youtube.com/watch?v=l_3zj6HeWUE (9:00-21:00)
+- Paper Group Norm: https://arxiv.org/pdf/1803.08494.pdf
