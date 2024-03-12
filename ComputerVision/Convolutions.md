@@ -10,9 +10,9 @@ _N.B.: Blue maps are inputs, and cyan maps are outputs._
 ![[full_padding_no_strides.gif]]
 ```
 
-| No padding, no strides    | Arbitrary padding, no strides | Half padding, no strides | Full padding, no strides |
-| ------------------------- | ----------------------------- | ------------------------ | ------------------------ |
-| $\mathbb{R}^{4 \times 4}$ |                               |                          |                          |
+| No padding, no strides                                         | Arbitrary padding, no strides | Half padding, no strides | Full padding, no strides |
+| -------------------------------------------------------------- | ----------------------------- | ------------------------ | ------------------------ |
+| $\mathbb{R}^{4 \times 4} \rightarrow \mathbb{R}^{4 \times 4} $ |                               |                          |                          |
 
 ## Transposed convolution animations
 
