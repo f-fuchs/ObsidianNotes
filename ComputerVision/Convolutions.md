@@ -35,14 +35,13 @@ In contrast to standard convolution the actual padding $p_t$ is not $p$, but $(k
 
 ## Dilated convolution animations
 
-In addition to the parameters above, dilated convolution introduce a dilation $d$ which specifies the spacing between kernel elements (a dilation of one is the standard for a "connected kernel")
+In addition to the parameters above, dilated convolution introduce a dilation $d$ which specifies the spacing between kernel elements (a dilation of one is the value for a "connected kernel" as seen above). With this the output shape $(m,m)$ can be calculated with $m=\lfloor\frac{n+2p-d \cdot (k-1)-1}{s}+1\rfloor$.
 
-| No padding, no stride, dilation    |
-| ---------------------------------- |
-| ![[dilation.gif]]                  |
-| $n=7, k=3,s=1, p_t=0$              |
-| $p=(3-1)-0=2$                      |
-| $m=(7-1) \cdot 1 - 2 \cdot 2+ 3=5$ |
+| No padding, no stride, dilation                               |
+| ------------------------------------------------------------- |
+| ![[dilation.gif]]                                             |
+| $n=7, k=3,s=1, p=0, d=2$                                      |
+| $m=\lfloor\frac{7+2 \cdot 0 - 2 \cdot (3-1)-1}{1}+1\rfloor=3$ |
 
 ## Sources
 - https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md
