@@ -1,6 +1,7 @@
 
-*Blue maps are inputs of shape ($n, n$), cyan maps are outputs of shape ($m,m$) and the shaded areas are the kernels of shape ($k,k$) with stride $s$ and padding $p$ .*
+# Animations
 
+*Blue maps are inputs of shape ($n, n$), cyan maps are outputs of shape ($m,m$) and the shaded areas are the kernels of shape ($k,k$) with stride $s$ and padding $p$ .*
 ## Convolution animations
 
 The output shape $(m,m)$ can be calculated with $m=\lfloor\frac{n+2p-(k-1)-1}{s}+1\rfloor$.
