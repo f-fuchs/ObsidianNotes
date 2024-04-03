@@ -4,7 +4,10 @@
 ![[One_hidden_layer.png]]
 $$
 \begin{aligned}
-\hat{y} = \sigma \left(W_2 \times \sigma(W_1 \times \vec{x}+\vec{b_1}) + \vec{b_2} \right)
+\hat{y} &= \sigma \left(W^{(2)} \times \sigma(W^{(1)} \times \vec{x}+\vec{b^{(1)}}) + \vec{b^{(2)}} \right) \\
+W^{(i)} &= \text{weight matrix of layer }i \\
+\vec{b^{(i)}} &= \text{bias vector of layer }i \\
+\vec{x} &= \text{input vector} 
 \end{aligned}
 $$
 ## Multilayer Perceptron (MLP)
