@@ -4,7 +4,7 @@
 ![[One_hidden_layer.png]]
 $$
 \begin{aligned}
-\hat{y} = 
+\hat{y} = \sigma \left(W_2 \times \sigma(W_1 \times \vec{x}+\vec{b_1}) + \vec{b_2} \right)
 \end{aligned}
 $$
 ## Multilayer Perceptron (MLP)
