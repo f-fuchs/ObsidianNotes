@@ -51,7 +51,7 @@ A multi channel convolution with multiple input channels can be understood as a 
 *This is still 2D convolution because the strides of the filter are along the height and width dimensions only (**NOT** depth). The number of movement directions of the filter determines the dimensions of convolution.*
 
 
-![[YCJRm.jpg|700]]
+![[multi_channel_convolution.jpg|700]]
 ## Sources
 - https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md
 - https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html

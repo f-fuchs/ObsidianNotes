@@ -4,7 +4,7 @@ The vanishing gradient problem arises because of the repeated application of the
 
 One way to deal with the vanishing gradient problem are newer activation functions, whose derivatives have a larger output space. The most common one is ReLu and its variants. While ReLu solves the Vanishing Gradients Problem it introduces a new problem, namely the dying ReLu problem.
 
-![[1024px-ReLU_and_GELU.svg.png]]
+![[ReLU_and_GELU.svg.png]]
 ## Dying ReLu Problem
 
 The ReLU neuron enters a dead state when it always outputs $0$ for any input value. This state is difficult to recover from because the gradient is also $0$. During backpropagation, the gradient fails to flow because the outputs are $0$ as a result, the weights are not updated. In the worst case scenario, a constant function may result in which the entire neural network fails. 
