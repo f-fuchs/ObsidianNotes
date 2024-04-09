@@ -24,12 +24,22 @@ Panoptic Segmentation is a computer vision task that combines semantic segmentat
 
 ### Referring segmentation
 
+Segment image with a given prompt can be either a text or visual prompt or both.
+
 ### Text referring segmentation
 
-Segment with a text prompt.
+Segment image with a text prompt.
 
 ### Visual referring segmentation
+Segment image with a visual prompt, including points, boxes, scribbles and masks, which can
+further generalize to a different referring image
 
+
+### Interactive segmentation
+
+## Model
+
+*SEEM* uses a generic encoder-decoder architecture. 
 ## Resources
 - Paper: https://arxiv.org/pdf/2304.06718.pdf
 - GitHub: https://github.com/facebookresearch/segment-anything
