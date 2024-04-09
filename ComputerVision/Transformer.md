@@ -71,6 +71,10 @@ $$
 w_{ij}^{′} = \frac{\vec{q_i}^T \vec{k_j}}{\sqrt{k}} \qquad
 w_{ij} = \frac{e^{w_{ij}^{′}}}{\sum_{j=1}^{t} e^{w_{ij}^{′}}}
 $$
+Written in Matrix notation, $Q, K, V$ are $X$ transformed by their respective weight matrices $W_q$, $W_k$,$W_v$  and $d_K$ is equal to $k$.:
+$$
+Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d_k}})V
+$$
 ### 3. Multi-head Attention
 
 Finally, we must account for the fact that a word can mean different things to different neighbors. Consider the following example: mary,gave,roses,to,susan. We see that the word *gave* has different relations to different parts of the sentence: *mary* expresses who’s doing the giving, *roses* expresses what’s being given, and *susan* expresses who the recipient is.
