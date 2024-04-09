@@ -42,6 +42,11 @@ Segment objects of interest by simply clicking or drawing a scribble on the inpu
 ## Model
 
 *SEEM* uses a generic encoder-decoder architecture. 
+![[SEEM.svg|700]]
+
+The image encoder is either a [[Focal Transformer]] or a [[Dual Attention Vision Transformer]].
+
+
 ## Resources
 - Paper: https://arxiv.org/pdf/2304.06718.pdf
 - GitHub: https://github.com/facebookresearch/segment-anything
