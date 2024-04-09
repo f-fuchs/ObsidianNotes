@@ -31,11 +31,13 @@ Segment image with a given prompt can be either a text or visual prompt or both.
 Segment image with a text prompt.
 
 ### Visual referring segmentation
+
 Segment image with a visual prompt, including points, boxes, scribbles and masks, which can
 further generalize to a different referring image
 
-
 ### Interactive segmentation
+
+Segment objects of interest by simply clicking or drawing a scribble on the input image.
 
 ## Model
 
