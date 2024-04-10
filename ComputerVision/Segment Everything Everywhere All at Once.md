@@ -122,7 +122,7 @@ note:Panoptic Segmentation is a computer vision task that combines semantic segm
 ---
 <!-- slide template="[[tpl-con-2-1-box]]" -->
 ::: title
-### Image Encoder
+### Image Encoder and Text Encoder
 :::
 
 ::: left
@@ -133,7 +133,7 @@ note:Panoptic Segmentation is a computer vision task that combines semantic segm
 :::
 
 ::: right
-The image encoder is either a [[Focal Transformer]] or a [[Dual Attention Vision Transformer]].
+The image encoder is either a [[Focal Transformer]] or a [[Dual Attention Vision Transformer]] and the Text Encoder is a Transformer Encoder.
 :::
 
 note: focal transformer in smallest model, dual attention vision transformer in both bigger model.
@@ -141,24 +141,24 @@ note: focal transformer in smallest model, dual attention vision transformer in 
 ---
 <!-- slide template="[[tpl-con-2-1-box]]" -->
 ::: title
-### Text Encoder
+### Combine Image and Text Encodings into Image-Text Representation Space
 :::
 
 ::: left
-<split even gap="1">
-![Focal Transformer|600](https://github.com/microsoft/Focal-Transformer/raw/main/figures/focal-transformer-teaser.png)
-![Dual Attention Vision Transformer|600](https://github.com/dingmyu/davit/raw/main/figures/teaser.png)
+<split even gap="3">
+![[UniCL.svg|500]]
+![[UniCL_algorithm.svg|500]]
 </split>
 :::
 
 ::: right
-The text encoder is Transformer Encoder and uses *Unified Contrastive Learning in Image-Text-Label Space* (UniCL) to combine image and text data into the joint *Image-Text Representation Space*.
+To combine the image and text encoding into a shared feature space *Unified Contrastive Learning in Image-Text-Label Space* (UniCL) is used.
 :::
 
 ::: source
-https://github.com/microsoft/UniCL
+https://github.com/microsoft/UniCL, https://arxiv.org/pdf/2204.03610.pdf
 :::
-note: focal transformer in smallest model, dual attention vision transformer in both bigger model.
+note: combine feature spaces by transposing image space and multiplying with textual space. train image and text encoder together via shared loss.
 
 ---
 <!-- slide template="[[tpl-title-text]]" -->
