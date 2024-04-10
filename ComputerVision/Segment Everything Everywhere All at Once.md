@@ -139,6 +139,28 @@ The image encoder is either a [[Focal Transformer]] or a [[Dual Attention Vision
 note: focal transformer in smallest model, dual attention vision transformer in both bigger model.
 
 ---
+<!-- slide template="[[tpl-con-2-1-box]]" -->
+::: title
+### Text Encoder
+:::
+
+::: left
+<split even gap="1">
+![Focal Transformer|600](https://github.com/microsoft/Focal-Transformer/raw/main/figures/focal-transformer-teaser.png)
+![Dual Attention Vision Transformer|600](https://github.com/dingmyu/davit/raw/main/figures/teaser.png)
+</split>
+:::
+
+::: right
+The text encoder uses *Unified Contrastive Learning in Image-Text-Label Space* (UniCL) to combine image and text data into the joint *Image-Text Representation Space*.
+:::
+
+::: source
+https://github.com/microsoft/UniCL
+:::
+note: focal transformer in smallest model, dual attention vision transformer in both bigger model.
+
+---
 <!-- slide template="[[tpl-title-text]]" -->
 
 ::: title
