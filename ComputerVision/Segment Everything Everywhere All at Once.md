@@ -152,7 +152,7 @@ note: focal transformer in smallest model, dual attention vision transformer in 
 :::
 
 ::: right
-The text encoder uses *Unified Contrastive Learning in Image-Text-Label Space* (UniCL) to combine image and text data into the joint *Image-Text Representation Space*.
+The text encoder is Transformer Encoder and uses *Unified Contrastive Learning in Image-Text-Label Space* (UniCL) to combine image and text data into the joint *Image-Text Representation Space*.
 :::
 
 ::: source
