@@ -10,21 +10,34 @@ height: 1080
 Fabian Fuchs
 
 ---
+<!-- slide template="[[tpl-title-text]]" -->
+::: title
 ## Segmentation
+:::
 
+::: text
 Three types of segmentation:
- - generic segmentation
- - referring segmentation
- - interactive segmentation
-note: The model was trained on panoptic segmentation, referring segmentation, and interactive segmentation and evaluated on generic segmentation (instance/panoptic/semantic), referring segmentation, and interactive segmentation.
----
-### Generic  segmentation
+ - generic segmentation: segmentation without any prompt, can be further divided into:
+	 - Semantic Image Segmentation
+	- Instance Image Segmentation
+	- Panoptic Segmentation
+ - referring segmentation: segmentation with text or visual prompt.
+ - interactive segmentation: segmentation with user interaction (can be iterative)
+ :::
+ note: The model was trained on panoptic segmentation, referring segmentation, and interactive segmentation and evaluated on generic segmentation (instance/panoptic/semantic), referring segmentation, and interactive segmentation. Segment image with a visual prompt, including points, boxes, scribbles and masks, which can further generalize to a different referring image
 
-Generic segmentation segments the image without any prompts. Can be further divided into:
+---
+<!-- slide template="[[tpl-title-text]]" -->
+::: title
+### Generic  segmentation
+:::
+
+::: text
+Generic segmentation segments the image without any prompts and can be further divided into:
 - Semantic Image Segmentation
 - Instance Image Segmentation
 - Panoptic Segmentation
-
+:::
 ---
 <!-- slide template="[[tpl-con-2-1-box]]" -->
 
@@ -92,27 +105,6 @@ note:Panoptic Segmentation is a computer vision task that combines semantic segm
 ![[cityscape_panoptic.png|500]]
 </split>
 :::
-
----
-
-### Referring segmentation
-
-Segment image with a given prompt can be either a text or visual prompt or both.
-
-### Text referring segmentation
-
-Segment image with a text prompt.
-
-### Visual referring segmentation
-
-Segment image with a visual prompt, including points, boxes, scribbles and masks, which can
-further generalize to a different referring image
-
----
-
-### Interactive segmentation
-
-Segment objects of interest by simply clicking or drawing a scribble on the input image.
 
 ---
 ## Model
