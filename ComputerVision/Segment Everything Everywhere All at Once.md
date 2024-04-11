@@ -153,6 +153,10 @@ note: focal transformer in smallest model, dual attention vision transformer in 
 
 ::: right
 To combine the image and text encoding into a shared feature space *Unified Contrastive Learning in Image-Text-Label Space* (UniCL) is used.
+
+$\Rightarrow$ allows Zero-Shot Image Classification
+
+ $\Rightarrow$ improves Linear-Probing, Fine-Tuning and Transfer Learning
 :::
 
 ::: source
@@ -169,9 +173,10 @@ note: combine feature spaces by transposing image space and multiplying with tex
 
 ::: text
 Resources used to create this presentation:
-- https://arxiv.org/pdf/2304.06718.pdf (Original Paper)
-- https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once/tree/v1.0 (Official GitHub)
+- https://arxiv.org/pdf/2304.06718.pdf (Segment Everything Everywhere All at Once Paper)
+- https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once/tree/v1.0 (Segment Everything Everywhere All at Once GitHub)
 - http://semantic-sam.xyzou.net:6090/ (SEEM Demo)
 - https://segment-anything.com/demo# (SAM Demo)
 - http://deepscene.cs.uni-freiburg.de/index.html (DeepScene Demo)
+- https://arxiv.org/pdf/2204.03610.pdf (UniCL Paper)
 :::
