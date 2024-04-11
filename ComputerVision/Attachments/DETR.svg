@@ -3,12 +3,15 @@
 
 <svg
    width="122.09196mm"
-   height="29.387964mm"
-   viewBox="0 0 122.09196 29.387964"
+   height="29.387966mm"
+   viewBox="0 0 122.09196 29.387966"
    version="1.1"
    id="svg1"
    inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
    sodipodi:docname="DETR.svg"
+   inkscape:export-filename="DETR.svg"
+   inkscape:export-xdpi="300"
+   inkscape:export-ydpi="300"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -32,7 +35,8 @@
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer1"
+     inkscape:export-bgcolor="#ffffffff" />
   <defs
      id="defs1">
     <clipPath
@@ -1873,27 +1877,14 @@
     </clipPath>
   </defs>
   <g
-     inkscape:groupmode="layer"
-     id="layer2"
-     inkscape:label="Ebene 2"
-     transform="translate(-29.482948,-42.325214)">
-    <rect
-       style="fill:#ffffff;stroke-width:0.305056"
-       id="rect1"
-       width="122.09196"
-       height="29.387964"
-       x="29.482948"
-       y="42.325214"
-       inkscape:label="rect1" />
-  </g>
-  <g
      inkscape:label="Ebene 1"
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(-29.482948,-42.325214)">
     <g
        id="g1213"
-       transform="matrix(0.26458333,0,0,0.26458333,-890.38078,29.804495)">
+       transform="matrix(0.26458333,0,0,0.26458333,-890.38078,29.804495)"
+       inkscape:label="g1213">
       <path
          d="M 0,182 H 719 V 0 H 0 Z"
          style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
