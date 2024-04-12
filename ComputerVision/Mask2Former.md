@@ -15,8 +15,11 @@ Both [[CNN]] and Transformer pixel decoders are fine.
 ## Transformer Decoder
 
 Recent studies suggest that the slow convergence of Transformer-based models is due to global context in the cross-attention layer, as it takes many training epochs for cross-attention to learn
-to attend to localized object regions. Masked attention, a variant of cross-
-attention that only attends within the foreground region of
-the predicted mask for each query.
+to attend to localized object regions. Therefore masked attention is a variant of cross-attention that only attends within the foreground region of the predicted mask for each query.
+
+Standard cross-attention (with residual path) computes: $X_l = softmax(Q_l K^T_l ) V_l + X_{l−1}$. 
+Masked attention  (with residual path) computes: $X_l = softmax(M_{l−1} + Q_l K^T_l )V_l + X_{l−1}$.
+
+Where $l$ is the layer index, $X_l \in \mathbb{R}^{N ×C}$ refers to the query features at the $l$th layer and $Q_l =f_Q(X_{l−1}) \in \mathbb{R}^{N ×C}$. $X_0$ denotes the input query features to the Transformer decoder. $K_l, V_l \in \mathbb{R}^{H_l \cdot W_l×C}$ are the image features under transformation $f_K(·)$ and $f_V (·)$ respectively, and $H_l$ and $W_l$ are the spatial resolution of image features of stage $k$ of the Transformer Decoder Layer.
 ## Resources
 - https://arxiv.org/pdf/2112.01527.pdf
