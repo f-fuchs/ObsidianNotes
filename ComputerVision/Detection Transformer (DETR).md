@@ -20,8 +20,15 @@ positional encodings that are added to the input of each attention layer.
 The decoder follows the standard architecture of the transformer, transforming $K$ embeddings of size $d$ using multi-headed self- and encoder-decoder attention mechanisms. The difference with the original transformer is that all the embeddings are decoded in parallel at each decoder layer,
 while the original [[Transformer Decoder]] uses an autoregressive model that predicts the output sequence one element at a time. Since the decoder is also permutation-invariant, the input embeddings must be different to produce different results. These input embeddings are learnt positional encodings that are referred to as object queries, and similarly to the encoder, are added to the input of each attention layer.
 
+Query, Key and Value for the second Attention Layer:
 $$
-\begin{al}
+\begin{aligned}
+Q & \coloneqq \text{Object Queries + Output from first Attention Layer} \in \mathbb{R}^{K \times d} \\
+K & \coloneqq \text{Spatial Positional Encoding + Encoder Memory} \in \mathbb{R}^{H \cdot W \times d} \\
+V & \coloneqq \text{Encoder Memory} \in \mathbb{R}^{H \cdot W \times d} \\
+Q K^T &\in \mathbb{R}^{K \times H \cdot W} \\
+(Q K^T) &\in \mathbb{R}^{K \times H \cdot W}
+\end{aligned} 
 $$
 
 ## FNN
