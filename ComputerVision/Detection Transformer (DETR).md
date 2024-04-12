@@ -17,8 +17,12 @@ positional encodings that are added to the input of each attention layer.
 
 ![[DETR_Decoder.png]]
 
-The decoder follows the standard architecture of the transformer, transforming $H \cdot W$ embeddings of size $d$ using multi-headed self- and encoder-decoder attention mechanisms. The difference with the original transformer is that all the embeddings are decoded in parallel at each decoder layer,
+The decoder follows the standard architecture of the transformer, transforming $K$ embeddings of size $d$ using multi-headed self- and encoder-decoder attention mechanisms. The difference with the original transformer is that all the embeddings are decoded in parallel at each decoder layer,
 while the original [[Transformer Decoder]] uses an autoregressive model that predicts the output sequence one element at a time. Since the decoder is also permutation-invariant, the input embeddings must be different to produce different results. These input embeddings are learnt positional encodings that are referred to as object queries, and similarly to the encoder, are added to the input of each attention layer.
+
+$$
+\begin{al}
+$$
 
 ## FNN
 
