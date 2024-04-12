@@ -18,7 +18,15 @@ positional encodings that are added to the input of each attention layer.
 ![[DETR_Decoder.png]]
 
 The decoder follows the standard architecture of the transformer, transforming $H \cdot W$ embeddings of size $d$ using multi-headed self- and encoder-decoder attention mechanisms. The difference with the original transformer is that all the embeddings are decoded in parallel at each decoder layer,
-while the original [[Transformer Decoder]] uses an autoregressive model that predicts the output sequence one element at a time. 
+while the original [[Transformer Decoder]] uses an autoregressive model that predicts the output sequence one element at a time. Since the decoder is also permutation-invariant, the input embeddings must be different to produce different results. These input embeddings are learnt positional encodings that are referred to as object queries, and similarly to the encoder, are added to the input of each attention layer.
 
-Since the decoder is also permutation-invariant, the input embeddings must be different to produce different results. These input embeddings are learnt positional encodings that are  referred to as object queries, and similarly to the encoder, are added to the input of each attention layer.
-The decoder receives queries (initially set to zero), output positional encoding (object queries), and encoder memory, and produces the final set of predicted class labels and bounding boxes through multiple multihead self-attention and decoder-encoder attention.
+## FNN
+
+The output of the decoder gets fed into two [[Feedforward Neural Network (FNN)|FNNs]], one to predict the *class* and one to predict the bounding box, consisting of the normalized center coordinates, height and width of the box. Since a fixed-size set of $H \cdot W$  bounding boxes, where $H \cdot W$ is usually much larger than the
+actual number of objects of interest in an image are predicted, an additional special class la-
+bel ∅ is used to represent that no object is detected within a slot. 
+
+## Resources
+- https://arxiv.org/pdf/2005.12872.pdf
+- https://amaarora.github.io/posts/2021-07-26-annotateddetr.html#the-detr-architecture
+- https://github.com/facebookresearch/detr
