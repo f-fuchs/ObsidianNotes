@@ -27,7 +27,7 @@ Q & \coloneqq \text{Object Queries + Output from first Attention Layer} \in \mat
 K & \coloneqq \text{Spatial Positional Encoding + Encoder Memory} \in \mathbb{R}^{H \cdot W \times d} \\
 V & \coloneqq \text{Encoder Memory} \in \mathbb{R}^{H \cdot W \times d} \\
 Q K^T &\in \mathbb{R}^{K \times H \cdot W} \\
-(Q K^T) &\in \mathbb{R}^{K \times H \cdot W}
+(Q K^T) V &\in \mathbb{R}^{K \times d}
 \end{aligned} 
 $$
 
