@@ -166,27 +166,24 @@ https://arxiv.org/pdf/2204.03610.pdf
 note: combine feature spaces by transposing image space and multiplying with textual space. train image and text encoder together via shared loss. Linear probing holds the model fixed, and you train a small model on top of it that takes the features and produces a label for your task.
 
 ---
-<!-- slide template="[[tpl-con-2-1-box]]" -->
+<!-- slide template="[[tpl-title-text]]" -->
 ::: title
 ### Visual Sampler
 :::
 
-::: left
-<split even gap="3">
-![[UniCL.svg|500]]
-![[UniCL_algorithm.svg|500]]
-</split>
+::: text
+The Visual Sampler generates the visual prompts given the feature maps of the target or referred image $\hat{Z}$ and the sampling locations $s \in {points, box, scribbles, polygons}$ of the user.
+
+$$
+P_v = VisualSampler(s, \hat{Z})
+$$
+
+1. Convert sampling locations into object boundaries via point sampling.
+2. Interpolate 512 point feature vectors uniformly in these object boundaries.
 :::
 
-::: right
-The Visual Sampler generates the visual prompts given the feature maps of the target or referred image and the sampling locations (points, box, scribbles, polygons) of the user.
-:::
 
-::: source
-https://github.com/microsoft/UniCL,    
-https://arxiv.org/pdf/2204.03610.pdf
-:::
-note: combine feature spaces by transposing image space and multiplying with textual space. train image and text encoder together via shared loss. Linear probing holds the model fixed, and you train a small model on top of it that takes the features and produces a label for your task.
+note: 
 
 ---
 <!-- slide template="[[tpl-title-text]]" -->
