@@ -217,15 +217,22 @@ $$
 
 
 note: 
-
-<!-- slide template="[[tpl-title-text]]" -->
+---
+<!-- slide template="[[tpl-con-2-1-box]]" -->
 ::: title
 ### Queries and prompt interaction
 :::
 
 ::: left
+![[SEEM_Decoder_Queries.PNG]]
 :::
 ::: right
+Training:
+- $Q_h$ is duplicated for generic, referring, and interactive segmentation
+- The corresponding prompts interact with their queries through self-attention
+
+Inference:
+- earnable queries $Q_h$ can freely interact with all prompts
 :::
 
 
