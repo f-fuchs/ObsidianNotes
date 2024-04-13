@@ -1,7 +1,7 @@
 ---
 theme: moon
-width: 1920
-height: 1080
+width: "1920"
+height: "1080"
 ---
 
 ## Segment Everything Everywhere All at Once 
@@ -198,13 +198,11 @@ note:
 ---
 <!-- slide template="[[tpl-title-text]]" -->
 ::: title
-### SEEM-Decoder
+## SEEM-Decoder
 :::
 
 ::: text
-SEEM-Decoder predicts the masks $M$ and semantic concepts $C$ based on the query outputs $O^m_h$ (mask 
-
-embeddings) and $O^c_h$ (class embeddings), which interact with text, visual, and memory prompts $⟨P_t, P_v , P_m⟩$:
+SEEM-Decoder predicts the masks $M$ and semantic concepts $C$ based on the query outputs $O^m_h$ (mask embeddings) and $O^c_h$ (class embeddings), which interact with text, visual, and memory prompts $⟨P_t, P_v , P_m⟩$:
 
 </br>
 
@@ -215,6 +213,19 @@ M &= MaskPredictor(O^m_h) \\\\
 C &= ConceptClassifier(O^c_h)
 \end{aligned}
 $$
+:::
+
+
+note: 
+
+<!-- slide template="[[tpl-title-text]]" -->
+::: title
+### Queries and prompt interaction
+:::
+
+::: left
+:::
+::: right
 :::
 
 
