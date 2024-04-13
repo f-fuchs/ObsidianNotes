@@ -4,7 +4,7 @@
 
 <grid drag="100 71" drop="0 15" bg="white" style="border-radius:15px"/>
 
-<grid drag="100 71" drop="3 15" align="topleft">
+<grid drag="97 71" drop="3 15" align="topleft">
 
 <% text %>
 

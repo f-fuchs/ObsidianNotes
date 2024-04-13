@@ -126,14 +126,24 @@ note:Panoptic Segmentation is a computer vision task that combines semantic segm
 :::
 
 ::: left
-<split even gap="1">
-![Focal Transformer|600](https://github.com/microsoft/Focal-Transformer/raw/main/figures/focal-transformer-teaser.png)
-![Dual Attention Vision Transformer|600](https://github.com/dingmyu/davit/raw/main/figures/teaser.png)
-</split>
+![Focal Transformer|1100](https://github.com/microsoft/Focal-Transformer/raw/main/figures/focal-transformer-teaser.png)
+
+
+![Dual Attention Vision Transformer|1100](https://github.com/dingmyu/davit/raw/main/figures/teaser.png)
 :::
 
 ::: right
 The image encoder is either a [[Focal Transformer]] or a [[Dual Attention Vision Transformer]] and the Text Encoder is a Transformer Encoder.
+
+$\Rightarrow Z = ImageEncoder(I)$,
+$I\in \mathbb{R}^{H \times W \times 3}$ 
+
+$\Rightarrow P_t=TextEncoder(T)$
+:::
+
+::: source
+https://github.com/microsoft/Focal-Transformer    
+https://github.com/dingmyu/davit
 :::
 
 note: focal transformer in smallest model, dual attention vision transformer in both bigger model.
@@ -180,6 +190,31 @@ $$
 
 1. Convert sampling locations into object boundaries via point sampling.
 2. Interpolate 512 point feature vectors uniformly in these object boundaries.
+:::
+
+
+note: 
+
+---
+<!-- slide template="[[tpl-title-text]]" -->
+::: title
+### SEEM-Decoder
+:::
+
+::: text
+SEEM-Decoder predicts the masks $M$ and semantic concepts $C$ based on the query outputs $O^m_h$ (mask 
+
+embeddings) and $O^c_h$ (class embeddings), which interact with text, visual, and memory prompts $⟨P_t, P_v , P_m⟩$:
+
+</br>
+
+$$
+\begin{aligned}
+⟨O^m_h, O^c_h⟩ &= Decoder(Q_h; ⟨P_t, P_v , P_m⟩|Z) \\\\
+M &= MaskPredictor(O^m_h) \\\\
+C &= ConceptClassifier(O^c_h)
+\end{aligned}
+$$
 :::
 
 
