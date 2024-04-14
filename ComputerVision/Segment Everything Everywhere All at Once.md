@@ -237,7 +237,18 @@ Inference:
 
 
 note: 
+---
+<!-- slide template="[[tpl-title-text]]" -->
+::: title
+## Memory Prompt
+:::
 
+::: text
+
+:::
+
+
+note: 
 ---
 <!-- slide template="[[tpl-title-text]]" -->
 
