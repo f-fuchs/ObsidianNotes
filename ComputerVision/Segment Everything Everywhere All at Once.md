@@ -34,7 +34,7 @@ Segmentation can be divided into three types:
 :::
 
 ::: left
-![[cityscape_semantic.png|1100]]
+![[cityscape_semantic.png|900]]
 :::
 
 ::: right
@@ -58,7 +58,7 @@ Label distinct objects independent of semantic categories.
 :::
 
 ::: left
-![[cityscape_instance.png|1100]]
+![[cityscape_instance.png|900]]
 :::
 
 ::: source
@@ -77,7 +77,7 @@ Label distinct objects but keep category association.
 :::
 
 ::: left
-![[cityscape_panoptic.png|1100]]
+![[cityscape_panoptic.png|900]]
 :::
 
 ::: source
@@ -116,7 +116,7 @@ note:Panoptic Segmentation is a computer vision task that combines semantic segm
 :::
 
 ::: left
-![[SEEM.svg|1300]]
+![[SEEM.svg|900]]
 :::
 
 ---
@@ -126,10 +126,10 @@ note:Panoptic Segmentation is a computer vision task that combines semantic segm
 :::
 
 ::: left
-![Focal Transformer|1000](https://github.com/microsoft/Focal-Transformer/raw/main/figures/focal-transformer-teaser.png)
+![Focal Transformer|900](https://github.com/microsoft/Focal-Transformer/raw/main/figures/focal-transformer-teaser.png)
 
 
-![Dual Attention Vision Transformer|1000](https://github.com/dingmyu/davit/raw/main/figures/teaser.png)
+![Dual Attention Vision Transformer|900](https://github.com/dingmyu/davit/raw/main/figures/teaser.png)
 :::
 
 ::: right
@@ -154,7 +154,7 @@ note: focal transformer in smallest model, dual attention vision transformer in 
 :::
 
 ::: left
-<split even gap="3">
+<split even gap="1">
 ![[UniCL.svg|450]]
 ![[UniCL_algorithm.svg|450]]
 </split>
@@ -223,7 +223,7 @@ note:
 :::
 
 ::: left
-![[SEEM_Decoder_Queries.PNG|1000]]
+![[SEEM_Decoder_Queries.PNG|900]]
 :::
 ::: right
 Training:
@@ -239,17 +239,22 @@ note:
 ---
 <!-- slide template="[[tpl-con-2-1-box]]" -->
 ::: title
-## Memory Prompt
+### Human-Model Interaction
 :::
 
 ::: left
-![[SEEM_MemoryPrompt.PNG|950]]
+![[SEEM_MemoryPrompt.PNG|900]]
 :::
 
 ::: right
-Memory prompts $P_m$ are used during interactive segmentation to convey the knowledge of the masks from the previous iteration to the current one through masked cross attention:
+During interactive segmentation the prompts are updated every iteration:
+
+1. Textual and visual prompts are updated by the User.
+2. Memory prompts $P_m$ , to convey the knowledge of the masks from the previous iteration to the current one, are updated through masked cross attention:
 $\Rightarrow P^l_m = MaskedCrossAtt(P^{l−1}_m ; M_p|Z)$
 where $P^{l-1}_m$ is the memory prompt of the iteration before and $M_p$ is the mask of the iteration before.
+
+
 :::
 
 ::: source
