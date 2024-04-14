@@ -2,15 +2,15 @@
  <% title %>
 </grid>
 
-<grid drag="28 75" drop="69 15" bg="white" style="border-radius:15px"/>
+<grid drag="38 75" drop="59 15" bg="white" style="border-radius:15px"/>
 
-<grid drag="64 70" drop="3 15" align="topleft">
+<grid drag="64 60" drop="3 15" align="topleft">
 
 <% left %>
 
 </grid>
 
-<grid drag="26 71" drop="70 17" align="topleft">
+<grid drag="26 61" drop="60 17" align="topleft">
 
 <% right %>
 

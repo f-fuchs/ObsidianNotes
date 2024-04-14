@@ -126,17 +126,16 @@ note:Panoptic Segmentation is a computer vision task that combines semantic segm
 :::
 
 ::: left
-![Focal Transformer|1100](https://github.com/microsoft/Focal-Transformer/raw/main/figures/focal-transformer-teaser.png)
+![Focal Transformer|1000](https://github.com/microsoft/Focal-Transformer/raw/main/figures/focal-transformer-teaser.png)
 
 
-![Dual Attention Vision Transformer|1100](https://github.com/dingmyu/davit/raw/main/figures/teaser.png)
+![Dual Attention Vision Transformer|1000](https://github.com/dingmyu/davit/raw/main/figures/teaser.png)
 :::
 
 ::: right
 The image encoder is either a [[Focal Transformer]] or a [[Dual Attention Vision Transformer]] and the Text Encoder is a Transformer Encoder.
 
-$\Rightarrow Z = ImageEncoder(I)$,
-$I\in \mathbb{R}^{H \times W \times 3}$ 
+$\Rightarrow Z = ImageEncoder(I), I\in \mathbb{R}^{H \times W \times 3}$ 
 
 $\Rightarrow P_t=TextEncoder(T)$
 :::
@@ -156,8 +155,8 @@ note: focal transformer in smallest model, dual attention vision transformer in 
 
 ::: left
 <split even gap="3">
-![[UniCL.svg|500]]
-![[UniCL_algorithm.svg|500]]
+![[UniCL.svg|450]]
+![[UniCL_algorithm.svg|450]]
 </split>
 :::
 
@@ -224,7 +223,7 @@ note:
 :::
 
 ::: left
-![[SEEM_Decoder_Queries.PNG]]
+![[SEEM_Decoder_Queries.PNG|1000]]
 :::
 ::: right
 Training:
@@ -238,16 +237,24 @@ Inference:
 
 note: 
 ---
-<!-- slide template="[[tpl-title-text]]" -->
+<!-- slide template="[[tpl-con-2-1-box]]" -->
 ::: title
 ## Memory Prompt
 :::
 
-::: text
-
+::: left
+![[SEEM_MemoryPrompt.PNG|950]]
 :::
 
+::: right
+Memory prompts $P_m$ are used during interactive segmentation to convey the knowledge of the masks from the previous iteration to the current one through masked cross attention:
+$\Rightarrow P^l_m = MaskedCrossAtt(P^{l−1}_m ; M_p|Z)$
+where $P^{l-1}_m$ is the memory prompt of the iteration before and $M_p$ is the mask of the iteration before.
+:::
 
+::: source
+https://arxiv.org/pdf/2304.06718.pdf
+:::
 note: 
 ---
 <!-- slide template="[[tpl-title-text]]" -->
