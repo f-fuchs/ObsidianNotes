@@ -8,9 +8,9 @@
 
 </grid>
 
-<grid drag="50 70" drop="50 15" bg="white" style="border-radius:15px" align="topleft"/>
+<grid drag="50 75" drop="50 15" bg="white" style="border-radius:15px" align="topleft"/>
 
-<grid drag="44 70" drop="53 15" align="topleft">
+<grid drag="44 75" drop="53 15" align="topleft">
 
 <% right %>
 

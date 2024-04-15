@@ -167,12 +167,18 @@ https://arxiv.org/pdf/2304.06718.pdf
 note: 
 
 ---
-<!-- slide template="[[tpl-title-text]]" -->
+<!-- slide template="[[tpl-con-2-1-box]]" -->
 ::: title
 ## SEEM-Decoder
 :::
 
-::: text
+::: left
+<grid drag="100 100" drop="center">
+![[SEEM_Decoder.png|900]]
+</grid>
+
+:::
+::: right
 SEEM-Decoder predicts the masks $M$ and semantic concepts $C$ based on the query outputs $O^m_h$ (mask embeddings) and $O^c_h$ (class embeddings), which interact with text, visual, and memory prompts $⟨P_t, P_v , P_m⟩$:
 
 </br>
@@ -186,7 +192,9 @@ C &= ConceptClassifier(O^c_h)
 $$
 :::
 
-
+::: source
+https://arxiv.org/pdf/2304.06718.pdf
+:::
 note: 
 ---
 <!-- slide template="[[tpl-con-2-1-box]]" -->
@@ -195,19 +203,27 @@ note:
 :::
 
 ::: left
+<grid drag="100 100" drop="center">
 ![[SEEM_Decoder_Queries.PNG|900]]
+</grid>
 :::
 ::: right
 Training:
-- $Q_h$ is duplicated for generic, referring, and interactive segmentation
+- $Q_h$ is duplicated for generic, referring, and interactive segmentation $Q_h \Rightarrow Q_o, Q_t, Q_v$
 - The corresponding prompts interact with their queries through self-attention
+	- Generic segmentation with no prompt
+	- Referring segmentation with the textual prompt
+	- Interactive segmentation with the visual and memory prompt
 
 Inference:
-- earnable queries $Q_h$ can freely interact with all prompts
+- learnable queries $Q_h$ can freely interact with all prompts
 :::
 
-
+::: source
+https://arxiv.org/pdf/2304.06718.pdf
+:::
 note: 
+
 ---
 <!-- slide template="[[tpl-con-2-1-box]]" -->
 ::: title
