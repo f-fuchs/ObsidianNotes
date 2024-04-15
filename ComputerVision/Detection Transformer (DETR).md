@@ -31,6 +31,7 @@ Q K^T &\in \mathbb{R}^{K \times H \cdot W} \\
 \end{aligned} 
 $$
 
+In the cross-attention modules, object queries extract features from the feature maps and in the self-attention modules, object queries interact with each other, so as to capture their relations. 
 ## FNN
 
 The output of the decoder gets fed into two [[Feedforward Neural Network (FNN)|FNNs]], one to predict the *class* and one to predict the bounding box, consisting of the normalized center coordinates, height and width of the box. Since a fixed-size set of $H \cdot W$  bounding boxes, where $H \cdot W$ is usually much larger than the
