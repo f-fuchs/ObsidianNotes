@@ -65,7 +65,9 @@ note:
 :::
 
 ::: left
-![[SEEM.svg|900]]
+<grid drag="" drop="center">
+![[SEEM.svg|100]]
+</grid>
 :::
 
 ---
