@@ -9,5 +9,5 @@ $$
 Channel Attention(Q, K, V) = \left(softmax\left(\frac{K^T V}{\sqrt{d_k}}\right)Q^T\right)^T
 $$
 
-![](https://github.com/dingmyu/davit/raw/main/figures/teaser.png)
+![[dual_attention_transformer.png]]
 ![](https://github.com/dingmyu/davit/raw/main/figures/architecture.png)

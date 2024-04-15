@@ -90,10 +90,9 @@ https://arxiv.org/pdf/2304.06718.pdf
 :::
 
 ::: left
-![Focal Transformer|900](https://github.com/microsoft/Focal-Transformer/raw/main/figures/focal-transformer-teaser.png)
+![[focal-transformer.png|900]]
 
-
-![Dual Attention Vision Transformer|900](https://github.com/dingmyu/davit/raw/main/figures/teaser.png)
+![[dual_attention_transformer.png|900]]
 :::
 
 ::: right
@@ -261,6 +260,14 @@ note:
 Results on the three segmentation types:
 1. Generic Segmentation:
 	- competitive panoptic, instance, and semantic segmentation performance against strong baselines
+	- significantly outperforms  recent generalist models with a margin around 10 points on panoptic segmentation metrics
+2. Referring segmentation: 
+	-  compared with other referring segmentation and generalist models, SEEM achieves competitive performance
+	- significant improvements by adding a visual prompt and further improvements by using the output of the visual query
+3. Interactive segmentation:
+	- comparable performance with specialized models
+	- better performance than SAM
+
 :::
 
 ---
@@ -278,4 +285,47 @@ Resources used to create this presentation:
 - https://segment-anything.com/demo# (SAM Demo)
 - http://deepscene.cs.uni-freiburg.de/index.html (DeepScene Demo)
 - https://arxiv.org/pdf/2204.03610.pdf (UniCL Paper)
+- https://arxiv.org/pdf/2212.11270.pdf (XDecoder Paper)
+- https://arxiv.org/pdf/2112.01527.pdf (Mask2Former Paper)
+:::
+
+---
+<!-- slide template="[[tpl-con-2-1-box]]" -->
+
+::: title
+
+## Additional Slides: Focal Transformer
+:::
+
+::: left
+<grid drag="100 100" drop="center">
+![[focal-transformer.png|900]]
+</grid>
+:::
+
+::: right
+Focal Transformer is a [[Vision Transformer]] variant that uses **focal self-attention**. 
+
+$\Rightarrow$ instead of each token attending all other tokens as in global self attention, each token attends the closest surrounding tokens at fine granularity but the tokens far away at coarse granularity, and thus can capture both short- and long-range visual dependencies efficiently and effectively.
+:::
+
+
+---
+<!-- slide template="[[tpl-con-2-1-box]]" -->
+
+::: title
+
+## Additional Slides: Dual Attention Vision Transformer
+:::
+
+::: left
+<grid drag="100 100" drop="center">
+![[focal-transformer.png|900]]
+</grid>
+:::
+
+::: right
+Focal Transformer is a [[Vision Transformer]] variant that uses **focal self-attention**. 
+
+$\Rightarrow$ instead of each token attending all other tokens as in global self attention, each token attends the closest surrounding tokens at fine granularity but the tokens far away at coarse granularity, and thus can capture both short- and long-range visual dependencies efficiently and effectively.
 :::
