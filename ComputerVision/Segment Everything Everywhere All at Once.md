@@ -298,16 +298,20 @@ Resources used to create this presentation:
 :::
 
 ::: left
-<grid drag="100 100" drop="center">
+
 ![[focal-transformer.png|900]]
-</grid>
+![[focal_attention.png|900]]
 :::
 
 ::: right
 Focal Transformer is a [[Vision Transformer]] variant that uses **focal self-attention**. 
 
-$\Rightarrow$ instead of each token attending all other tokens as in global self attention, each token attends the closest surrounding tokens at fine granularity but the tokens far away at coarse granularity, and thus can capture both short- and long-range visual dependencies efficiently and effectively.
+$\Rightarrow$ Instead of each token attending all other tokens as in global self attention, each token attends the closest surrounding tokens at fine granularity but the tokens far away at coarse granularity, and thus can capture both short- and long-range visual dependencies efficiently and effectively.
+
+$\Rightarrow$ Extracting the surrounding tokens for each query position suffers from high time and memory cost . Therefore focal self-attention is computed at the window level. 
 :::
+
+note: since we need to duplicate each token for all queries that can get access to it
 
 
 ---
