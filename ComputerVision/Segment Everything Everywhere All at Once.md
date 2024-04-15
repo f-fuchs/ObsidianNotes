@@ -249,6 +249,20 @@ where $P^{l-1}_m$ is the memory prompt of the iteration before and $M_p$ is the 
 https://arxiv.org/pdf/2304.06718.pdf
 :::
 note: 
+
+---
+<!-- slide template="[[tpl-title-text]]" -->
+
+::: title
+## Results
+:::
+
+::: text
+Results on the three segmentation types:
+1. Generic Segmentation:
+	- competitive panoptic, instance, and semantic segmentation performance against strong baselines
+:::
+
 ---
 <!-- slide template="[[tpl-title-text]]" -->
 
