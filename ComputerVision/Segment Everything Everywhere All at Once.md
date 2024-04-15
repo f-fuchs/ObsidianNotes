@@ -325,7 +325,14 @@ $\Rightarrow$ instead of each token attending all other tokens as in global self
 :::
 
 ::: right
-Focal Transformer is a [[Vision Transformer]] variant that uses **focal self-attention**. 
+Capture global context while maintaining computational efficiency. It uses the self-attention mechanisms with both "spatial tokens" and "channel tokens".  
 
-$\Rightarrow$ instead of each token attending all other tokens as in global self attention, each token attends the closest surrounding tokens at fine granularity but the tokens far away at coarse granularity, and thus can capture both short- and long-range visual dependencies efficiently and effectively.
+$$\small
+SpatialAttention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d_k}})V
+$$
+$$\small
+ChannelAttention(Q, K, V) = \left(softmax\left(\frac{K^T V}{\sqrt{d_k}}\right)Q^T\right)^T
+$$
+
+Channel attention captures global interactions, due to each channel token containing an abstract representation of the entire image. Spatial attention refines the local representations by performing fine-grained interactions across spatial locations, which in turn helps the global information modeling in channel attention.
 :::
