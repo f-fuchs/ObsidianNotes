@@ -18,73 +18,13 @@ Fabian Fuchs
 ::: text
 Segmentation can be divided into three types:
  - Generic Segmentation: Segment image without any prompt. This can be further divided into:
-	- Semantic Image Segmentation
-	- Instance Image Segmentation
+	- Semantic Image Segmentation: Label semantic categories independent of distinct objects.
+	- Instance Image Segmentation: Label distinct objects independent of semantic categories.
 	- Panoptic Segmentation
  - Referring Segmentation: Segment image with a textual or visual prompt.
  - Interactive Segmentation: Segment image with user interaction (can be iterative)
  :::
  note: The model was trained on panoptic segmentation, referring segmentation, and interactive segmentation and evaluated on generic segmentation (instance/panoptic/semantic), referring segmentation, and interactive segmentation. Segment image with a visual prompt, including points, boxes, scribbles and masks, which can further generalize to a different referring image
-
----
-<!-- slide template="[[tpl-con-2-1-box]]" -->
-
-::: title
-#### Semantic Image Segmentation
-:::
-
-::: left
-![[cityscape_semantic.png|900]]
-:::
-
-::: right
-Label semantic categories independent of distinct objects.
-:::
-
-::: source
-http://deepscene.cs.uni-freiburg.de/index.html
-:::
-note: Semantic image segmentation is the technique that involves detecting objects within an image and grouping them based on defined categories. Which is simply labeling each pixel of an image with a corresponding class of what is being represented. http://deepscene.cs.uni-freiburg.de/index.html
-
----
-<!-- slide template="[[tpl-con-2-1-box]]" -->
-
-::: title
-#### Instance Image Segmentation
-:::
-
-::: right
-Label distinct objects independent of semantic categories.
-:::
-
-::: left
-![[cityscape_instance.png|900]]
-:::
-
-::: source
-https://segment-anything.com/demo#
-:::
-note: Instance segmentation consists of the localization of specific objects based on the association of their belonging pixels. used by the Segment Anything Model (SAM). https://segment-anything.com/demo#
-
----
-<!-- slide template="[[tpl-con-2-1-box]]" -->
-::: title
-#### Panoptic Segmentation
-:::
-
-::: right
-Label distinct objects but keep category association.
-:::
-
-::: left
-![[cityscape_panoptic.png|900]]
-:::
-
-::: source
-http://semantic-sam.xyzou.net:6090/
-:::
-
-note:Panoptic Segmentation is a computer vision task that combines semantic segmentation and instance segmentation to provide a comprehensive understanding of the scene. The goal of panoptic segmentation is to segment the image into semantically meaningful parts or regions, while also detecting and distinguishing individual instances of objects within those regions. In a given image, every pixel is assigned a semantic label, and pixels belonging to "things" classes (countable objects with instances, like cars and people) are assigned unique instance IDs. used by SEEM: Segment Everything Everywhere All At Once. http://semantic-sam.xyzou.net:6090/
 
 ---
 <!-- slide template="[[tpl-title-image]]" -->
@@ -103,6 +43,15 @@ note:Panoptic Segmentation is a computer vision task that combines semantic segm
 ![[cityscape_panoptic.png|500]]
 </split>
 :::
+
+::: source
+http://deepscene.cs.uni-freiburg.de/index.html, https://segment-anything.com/demo#, http://semantic-sam.xyzou.net:6090/
+:::
+
+note: 
+- Semantic image segmentation is the technique that involves detecting objects within an image and grouping them based on defined categories. Which is simply labeling each pixel of an image with a corresponding class of what is being represented. http://deepscene.cs.uni-freiburg.de/index.html
+- Instance segmentation consists of the localization of specific objects based on the association of their belonging pixels. used by the Segment Anything Model (SAM). https://segment-anything.com/demo#
+- Panoptic Segmentation is a computer vision task that combines semantic segmentation and instance segmentation to provide a comprehensive understanding of the scene. The goal of panoptic segmentation is to segment the image into semantically meaningful parts or regions, while also detecting and distinguishing individual instances of objects within those regions. In a given image, every pixel is assigned a semantic label, and pixels belonging to "things" classes (countable objects with instances, like cars and people) are assigned unique instance IDs. used by SEEM: Segment Everything Everywhere All At Once. http://semantic-sam.xyzou.net:6090/
 
 ---
 <!-- slide template="[[tpl-con-2-1-box]]" -->
