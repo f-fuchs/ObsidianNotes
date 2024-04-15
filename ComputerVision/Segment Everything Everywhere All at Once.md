@@ -20,9 +20,9 @@ Segmentation can be divided into three types:
  - Generic Segmentation: Segment image without any prompt. This can be further divided into:
 	- Semantic Image Segmentation: Label semantic categories independent of distinct objects.
 	- Instance Image Segmentation: Label distinct objects independent of semantic categories.
-	- Panoptic Segmentation
+	- Panoptic Segmentation: Label distinct objects depending on semantic categories.
  - Referring Segmentation: Segment image with a textual or visual prompt.
- - Interactive Segmentation: Segment image with user interaction (can be iterative)
+ - Interactive Segmentation: Segment image with user interaction (can be iterative).
  :::
  note: The model was trained on panoptic segmentation, referring segmentation, and interactive segmentation and evaluated on generic segmentation (instance/panoptic/semantic), referring segmentation, and interactive segmentation. Segment image with a visual prompt, including points, boxes, scribbles and masks, which can further generalize to a different referring image
 
@@ -68,7 +68,7 @@ The encoder encompasses the:
 - Visual Sampler,
 
 and the decoder consists of:
-- cross-attention of the queries with the image features,
+- cross-attention of the queries and memory prompt with the image features,
 - self-attention of the queries and prompts,
 - a pixel decoder and transformer decoder to generate mask and class embeddings.
 :::
