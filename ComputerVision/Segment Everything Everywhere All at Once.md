@@ -311,6 +311,9 @@ $\Rightarrow$ Instead of each token attending all other tokens as in global self
 $\Rightarrow$ Extracting the surrounding tokens for each query position suffers from high time and memory cost . Therefore focal self-attention is computed at the window level. 
 :::
 
+::: source
+https://arxiv.org/pdf/2107.00641.pdf
+::: 
 note: since we need to duplicate each token for all queries that can get access to it
 
 
@@ -323,9 +326,8 @@ note: since we need to duplicate each token for all queries that can get access 
 :::
 
 ::: left
-<grid drag="100 100" drop="center">
-![[focal-transformer.png|900]]
-</grid>
+![[dual_attention_transformer.png|900]]
+![[dual_attention_block.png|900]]
 :::
 
 ::: right
@@ -339,4 +341,34 @@ ChannelAttention(Q, K, V) = \left(softmax\left(\frac{K^T V}{\sqrt{d_k}}\right)Q^
 $$
 
 Channel attention captures global interactions, due to each channel token containing an abstract representation of the entire image. Spatial attention refines the local representations by performing fine-grained interactions across spatial locations, which in turn helps the global information modeling in channel attention.
+:::
+
+::: source
+https://arxiv.org/pdf/2204.03645.pdf
+:::
+
+---
+<!-- slide template="[[tpl-con-2-1-box]]" -->
+
+::: title
+
+## Additional Slides: Pixel Decoder and Transformer Decoder 
+:::
+
+::: left
+![[Mask2Former.PNG|900]]
+:::
+
+::: right
+The *SEEM* Decoder uses a similar architecture to the decoder of *Mask2Former*  consisting of a pixel decoder and a Transformer decoder. 
+
+$\Rightarrow$ The pixel decoder gradually upsamples low-resolution features from the output of the backbone to generate high-resolution per-pixel embeddings. 
+
+$\Rightarrow$ The Transformer decoder  operates on image features to process object queries. 
+
+$\Rightarrow$ The final binary mask predictions are decoded from per-pixel embeddings with object queries.
+:::
+
+::: source
+https://arxiv.org/pdf/2112.01527.pdf
 :::
