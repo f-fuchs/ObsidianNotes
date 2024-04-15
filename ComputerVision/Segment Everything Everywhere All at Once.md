@@ -61,13 +61,26 @@ note:
 :::
 
 ::: right
-*SEEM* uses a generic encoder-decoder architecture. 
+*SEEM* uses a generic encoder-decoder architecture.  
+The encoder encompasses the: 
+- Image Encoder,
+- Text Encoder,
+- Visual Sampler,
+
+and the decoder consists of:
+- cross-attention of the queries with the image features,
+- self-attention of the queries and prompts,
+- a pixel decoder and transformer decoder to generate mask and class embeddings.
 :::
 
 ::: left
-<grid drag="" drop="center">
-![[SEEM.svg|100]]
+<grid drag="100 100" drop="center">
+![[SEEM.svg|900]]
 </grid>
+:::
+
+::: source
+https://arxiv.org/pdf/2304.06718.pdf
 :::
 
 ---
@@ -96,7 +109,7 @@ https://github.com/microsoft/Focal-Transformer
 https://github.com/dingmyu/davit
 :::
 
-note: focal transformer in smallest model, dual attention vision transformer in both bigger model.
+note: focal transformer in smallest model, dual attention vision transformer in both bigger model. in the configs on github additionally ViT is used as image encoder and CLIP as text encoder
 
 ---
 <!-- slide template="[[tpl-con-2-1-box]]" -->
@@ -126,22 +139,30 @@ https://arxiv.org/pdf/2204.03610.pdf
 note: combine feature spaces by transposing image space and multiplying with textual space. train image and text encoder together via shared loss. Linear probing holds the model fixed, and you train a small model on top of it that takes the features and produces a label for your task.
 
 ---
-<!-- slide template="[[tpl-title-text]]" -->
+<!-- slide template="[[tpl-con-2-1-box]]" -->
 ::: title
 ### Visual Sampler
 :::
 
-::: text
+::: left
+<grid drag="100 100" drop="center">
+![[SEEM_VisualSampler.png|900]]
+</grid>
+:::
+::: right
 The Visual Sampler generates the visual prompts given the feature maps of the target or referred image $\hat{Z}$ and the sampling locations $s \in {points, box, scribbles, polygons}$ of the user.
 
 $$
 P_v = VisualSampler(s, \hat{Z})
 $$
 
-1. Convert sampling locations into object boundaries via point sampling.
-2. Interpolate 512 point feature vectors uniformly in these object boundaries.
+1. Extract the corresponding region from the image features through point sampling
+2. Interpolate 512 point feature vectors uniformly from that region.
 :::
 
+::: source
+https://arxiv.org/pdf/2304.06718.pdf
+:::
 
 note: 
 
