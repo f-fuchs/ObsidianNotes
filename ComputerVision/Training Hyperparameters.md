@@ -21,7 +21,9 @@ In theory when multiplying the batch size by $k$, we should also multiply the le
 Adaptive learning rate methods, such as  [[Adam]], RMSProp, and AdaGrad, adjust the learning rate dynamically during training based on the history of gradients. Therefore adjusting the learning rate may not be needed.
 
 ### Relationship with Generalization
-There's a relationship between batch size and generalization performance. Smaller batch sizes introduce more noise into the parameter updates, which can sometimes lead to better generalization. Therefore smaller batch sizes are a form of Regularization. 
+
+There's a relationship between batch size and generalization performance. Smaller batch sizes introduce more noise into the parameter updates, which can sometimes lead to better generalization. Therefore smaller batch sizes are a form of Regularization.
+
 ## Number of Iterations
 
 Number of forward/backward passes, each pass using [[Training Hyperparameters#Batch Size| batch size]] number of examples.

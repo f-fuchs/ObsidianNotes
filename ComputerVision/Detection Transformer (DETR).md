@@ -5,15 +5,11 @@ DEtection TRansformer (DETR) is a model for [[Object Detection#Object Detection|
 
 ## Vision Backbone
 
-Starting from the initial image $x_{img} \in \mathbb{R}^{3\times H_0 \times W_0}$ (with 3 color
-channels), a conventional CNN backbone generates a lower-resolution activation
-map $f \in \mathbb{R}^{C\times H \times W}$.
+Starting from the initial image $x_{img} \in \mathbb{R}^{3\times H_0 \times W_0}$ (with 3 color channels), a conventional CNN backbone generates a lower-resolution activation map $f \in \mathbb{R}^{C\times H \times W}$.
 
 ## Transformer Encoder & Decoder
 
-The decoder first applies a 1x1 convolution to reduces the channel dimension of the features from the [[Convolutional Neural Networks (CNN)]] backbone. Afterwards the  spatial dimensions  of the features  $f \in \mathbb{R}^{d\times H \times W}$ are collapsed into one dimension, resulting in a features of dimension $d\times H \cdot W$ . Finally,  since the
-transformer architecture is permutation-invariant, we supplement it with fixed
-positional encodings that are added to the input of each attention layer. 
+The decoder first applies a 1x1 convolution to reduces the channel dimension of the features from the [[Convolutional Neural Networks (CNN)]] backbone. Afterwards the  spatial dimensions  of the features  $f \in \mathbb{R}^{d\times H \times W}$ are collapsed into one dimension, resulting in a features of dimension $d\times H \cdot W$ . Finally,  since the transformer architecture is permutation-invariant, we supplement it with fixed positional encodings that are added to the input of each attention layer. 
 
 ![[DETR_Decoder.png]]
 
