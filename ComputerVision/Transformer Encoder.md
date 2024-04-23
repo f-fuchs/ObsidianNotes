@@ -1,8 +1,8 @@
+A transformer encoder consist of an input embedding and positional embedding and multiple transformer encoder blocks.
+![[The-Transformer-encoder-structure.png|200]]
+## Transformer Encoder Block
 
-
-## Transformer Block
-
-A transformer block consist of more than just self attention, namely the block applies, in sequence: a self attention layer, layer normalization, a [[Feedforward Neural Network (FNN)|feed forward layer]] (a single MLP applied **independently** to each vector), and another layer normalization. Residual connections are added around both, before the normalization. The order of the various components is not set in stone; the important thing is to combine self-attention with a local feedforward, and to add normalization and residual connections. 
+Each transformer encoder block consist: a self-attention layer, [[Normalization Layers|layer normalization]], a [[Feedforward Neural Network (FNN)|feed forward layer]] (a single MLP applied **independently** to each vector), and another [[Normalization Layers|layer normalization]]. Residual connections are added around both, before the normalization. The order of the various components is not set in stone; the important thing is to combine self-attention with a local feedforward, and to add normalization and residual connections. 
 
 ![[transformer-block.svg]]
 

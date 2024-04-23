@@ -87,3 +87,9 @@ The simplest way to understand multi-head self-attention is to see it as a small
 
 It turns out we can have our cake and eat it too: there is a way to implement multi-head self-attention so that it is roughly as fast as the single-head version, but we still get the benefit of having different self-attention operations in parallel. To accomplish this, each head receives low-dimensional **keys**, **queries** and **values**. If the input vector has $k=256$ dimensions, and we have $h=4$ attention heads, we multiply the input vectors by a $256×64$ matrix to project them down to a sequence of $64$ dimensional vectors. For every head, we do this 3 times: for the **keys**, the **queries** and the **values**.
 ![[multi-head.svg]]
+
+## Cross-Attention
+
+
+## Resources
+- https://magazine.sebastianraschka.com/p/understanding-and-coding-self-attention
