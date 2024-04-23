@@ -4,11 +4,11 @@ Masked-attention Mask Transformer (*Mask2Former*)  is a universal image segmenta
 
 ## Backbone
 
-Both [[CNN]] and [[Vision Transformer]] backbones are fine.
+Both [[Convolutional Neural Networks (CNN)]] and [[Vision Transformer]] backbones are fine.
 
 ## Pixel Decoder
 
-Both [[CNN]] and Transformer pixel decoders are fine.
+Both [[Convolutional Neural Networks (CNN)]] and Transformer pixel decoders are fine.
 
 ## Transformer Decoder
 
