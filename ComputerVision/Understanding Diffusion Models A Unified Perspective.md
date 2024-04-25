@@ -11,3 +11,8 @@ Types:
 ## Background: ELBO, VAE, and Hierarchical VAE
 
 ### Evidence Lower Bound (ELBO)
+
+-  $p(x, z)$  joint distribution of latent variables $z$ and the data we observe $x$ 
+- two ways to get $p(x)$:
+	- marginalization (integrate over all $z$): $p(x) = \int p(x, z)dz$
+	- chain-rule: $p(x)=\frac{p(x, z)}{p(z|x)}$
