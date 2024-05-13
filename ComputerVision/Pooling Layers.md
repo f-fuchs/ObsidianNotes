@@ -1,6 +1,9 @@
 ---
 dg-publish: true
 ---
+
+# Pooling Layers
+
 ## Max Pooling
 
 ```image-layout-h
@@ -8,6 +11,7 @@ dg-publish: true
 ![[numerical_max_pooling_01.svg]]
 ![[numerical_max_pooling_02.svg]]
 ```
+
 ## Average Pooling
 
 ```image-layout-h

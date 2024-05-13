@@ -1,7 +1,11 @@
 ---
 dg-publish: true
 ---
+
+# Segmentation
+
 Segmentation can be divided into three types:
+
  - Generic Segmentation: Segment image without any prompt. This can be further divided into:
 	- Semantic Image Segmentation: Label semantic categories independent of distinct objects.
 		- ![[cityscape_semantic.png|200]]
@@ -11,9 +15,5 @@ Segmentation can be divided into three types:
 		- ![[cityscape_panoptic.png|200]]
  - Referring Segmentation: Segment image with a textual or visual prompt.
  - Interactive Segmentation: Segment image with user interaction (can be iterative).
-
-
-
-
 
 ]]

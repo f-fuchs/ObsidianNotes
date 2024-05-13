@@ -1,10 +1,14 @@
 ---
 dg-publish: true
 ---
-# Animations
 
-*Blue maps are inputs of shape ($n, n$), cyan maps are outputs of shape ($m,m$) and the shaded areas are the kernels of shape ($k,k$) with stride $s$ and padding $p$ .*
-## Convolution animations
+# Convolutional Layer
+
+## Animations
+
+*Blue maps are inputs of shape ($n, n$), cyan maps are outputs of shape ($m,m$) and the shaded areas are the kernels of shape ($k,k$) with stride $s$ and padding $p$.*
+
+### Convolution Animations
 
 The output shape $(m,m)$ can be calculated with $m=\lfloor\frac{n+2p-(k-1)-1}{s}+1\rfloor$.
 
@@ -18,9 +22,10 @@ The output shape $(m,m)$ can be calculated with $m=\lfloor\frac{n+2p-(k-1)-1}{s}
 | $n=5, k=3,s=1, p=2$                                 | $n=5, k=3,s=2, p=0$                                 | $n=5,k=3,s=2,p=1$                                   |
 | $m=\lfloor\frac{5+2 \cdot 2-(3-1)-1}{1}+1\rfloor=7$ | $m=\lfloor\frac{5+2 \cdot 0-(3-1)-1}{2}+1\rfloor=2$ | $m=\lfloor\frac{5+2 \cdot 1-(3-1)-1}{2}+1\rfloor=3$ |
 
-## Transposed convolution animations
+### Transposed Convolution Animations
 
 The output shape $(m,m)$ can be calculated with $m=(n-1) \cdot s-2 \cdot p+ k$.
+
 In contrast to standard convolution the actual padding $p_t$ is not $p$, but $(k-1)-p$. Therefore $p=(k-1)-p_t$.
 
 | no padding, no strides                      | Arbitrary padding, no strides                    | half padding, no strides                    |
@@ -35,8 +40,7 @@ In contrast to standard convolution the actual padding $p_t$ is not $p$, but $(k
 | $p=(3-1)-0=2$                               | $p=(3-1)-2=0$                                    | $p=(3-1)-1=1$                               |
 | $m=(7-1) \cdot 1 - 2 \cdot 2+ 3=5$          | $m=(2-1) \cdot 2 - 2 \cdot 0 + 3=5$              | $m=(3-1) \cdot 2 - 2 \cdot 1 + 3=5$         |
 
-
-## Dilated convolution animations
+### Dilated Convolution Animations
 
 In addition to the parameters above, dilated convolution introduce a dilation $d$ which specifies the spacing between kernel elements (a dilation of one is the value for a "connected kernel" as seen above). With this the output shape $(m,m)$ can be calculated with $m=\lfloor\frac{n+2p-d \cdot (k-1)-1}{s}+1\rfloor$.
 
@@ -46,15 +50,16 @@ In addition to the parameters above, dilated convolution introduce a dilation $d
 | $n=7, k=3,s=1, p=0, d=2$                                      |
 | $m=\lfloor\frac{7+2 \cdot 0 - 2 \cdot (3-1)-1}{1}+1\rfloor=3$ |
 
-# Multi Channel Convolution
+## Multi Channel Convolution
 
 A multi channel convolution with multiple input channels can be understood as a three dimensional tensor (gray in the image below) that gets multiplied elementwise with three dimensional chunks of the input image and then gets summed over all dimension, which results in one value per image chunk. *(We basically take a weighted sum of the three dimensional chunk)*.This means that for each output channel we need one three dimensional tensors or kernel.
 
 *This is still 2D convolution because the strides of the filter are along the height and width dimensions only (**NOT** depth). The number of movement directions of the filter determines the dimensions of convolution.*
 
-
 ![[multi_channel_convolution.jpg|700]]
+
 ## Sources
-- https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md
-- https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html
-- https://pytorch.org/docs/stable/generated/torch.nn.ConvTranspose2d.html
+
+- <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>
+- <https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html>
+- <https://pytorch.org/docs/stable/generated/torch.nn.ConvTranspose2d.html>
