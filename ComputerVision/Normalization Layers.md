@@ -1,7 +1,11 @@
 ---
 dg-publish: true
 ---
+
+# Normalization Layers
+
 ![[comparison_of_different_normalizations.svg|700]]
+
 ## Batch Norm
 
 ```run-python
@@ -111,6 +115,7 @@ print(f"{(output_instance-output_instance_hand).max()}")
 ## Group Norm
 
 ### 1 Group -> LayerNorm
+
 ```run-python
 import torch
 
@@ -176,7 +181,8 @@ output_instance = instance_norm(data)
 print(f"{(output_group-output_instance).max()}")
 
 ```
+
 ## Resources
 
-- YouTube Yannic Kilcher: https://www.youtube.com/watch?v=l_3zj6HeWUE (9:00-21:00)
-- Paper Group Norm: https://arxiv.org/pdf/1803.08494.pdf
+- YouTube Yannic Kilcher: <https://www.youtube.com/watch?v=l_3zj6HeWUE> (9:00-21:00)
+- Paper Group Norm: <https://arxiv.org/pdf/1803.08494.pdf>

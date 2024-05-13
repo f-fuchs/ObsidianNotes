@@ -1,6 +1,5 @@
 ---
 dg-publish: true
-dg-home: true
 ---
 
 *SEEM* uses a generic encoder-decoder architecture.  
