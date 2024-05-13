@@ -1,4 +1,6 @@
-
+---
+dg-publish: true
+---
 ## Max Pooling
 
 ```image-layout-h

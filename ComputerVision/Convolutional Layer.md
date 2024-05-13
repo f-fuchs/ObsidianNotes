@@ -1,4 +1,6 @@
-
+---
+dg-publish: true
+---
 # Animations
 
 *Blue maps are inputs of shape ($n, n$), cyan maps are outputs of shape ($m,m$) and the shaded areas are the kernels of shape ($k,k$) with stride $s$ and padding $p$ .*

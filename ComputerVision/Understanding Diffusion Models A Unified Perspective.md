@@ -1,4 +1,6 @@
-
+---
+dg-publish: true
+---
 ## Introduction: Generative Models
 
 Given observed samples $x$ from a distribution of interest, the goal of a generative model is to learn to model its true data distribution $p(x)$. Once learned, we can generate new samples from our approximate model at will. Furthermore, under some formulations, we are able to use the learned model to evaluate the likelihood of observed or sampled data as well.

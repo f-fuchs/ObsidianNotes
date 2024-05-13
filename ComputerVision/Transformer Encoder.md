@@ -1,3 +1,6 @@
+---
+dg-publish: true
+---
 A transformer encoder consist of an input embedding and positional embedding and multiple transformer encoder blocks.
 ![[The-Transformer-encoder-structure.png|200]]
 ## Transformer Encoder Block

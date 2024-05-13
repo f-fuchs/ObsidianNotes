@@ -1,3 +1,7 @@
+---
+dg-publish: true
+---
+
 ## Self-Attention
 
 ### Theory

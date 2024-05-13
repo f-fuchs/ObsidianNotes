@@ -1,4 +1,6 @@
-
+---
+dg-publish: true
+---
 DEtection TRansformer (DETR) is a model for [[Object Detection#Object Detection|Object Detection]]. It uses an encoder-decoder architecture wit a [[Convolutional Neural Networks (CNN)]] based vision backbone, a [[Transformer Encoder]] as encoder, a modified [[Transformer Decoder]] and a simple [[Feedforward Neural Network (FNN)|FNN]] that makes the final detection prediction. 
 
 ![[DETR.png]]

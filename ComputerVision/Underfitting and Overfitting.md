@@ -1,4 +1,6 @@
-
+---
+dg-publish: true
+---
 ## Bias
 
 Bias in machine learning refers to the error that arises from overly simplistic assumptions made by the learning algorithm. These assumptions make the model easier to comprehend and learn, but they may not capture the underlying complexities of the data. Bias is the error that arises from the model's inability to accurately represent the true relationship between the input and output. Poor performance of a model on both training and testing data indicates high bias due to the simple model, which is known as **underfitting**.

@@ -1,4 +1,6 @@
-
+---
+dg-publish: true
+---
 Mask classification is an alternative paradigm that disentangles the image partitioning and classification aspects of segmentation. Instead of classifying each pixel, mask classification-based methods predict a set of binary masks, each associated with a single class prediction. In contrast, per-pixel classification assumes a static number of outputs and cannot return a variable number of predicted regions/segments, which is required for instance-level tasks.
 ![[MaskFormer_per_pixel_vs_per_mask.png]]
 

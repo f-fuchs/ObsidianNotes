@@ -1,4 +1,6 @@
-
+---
+dg-publish: true
+---
 ## One Layer Neural Network
 
 ![[One_hidden_layer.png]]

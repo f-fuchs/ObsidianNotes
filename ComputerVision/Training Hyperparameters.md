@@ -1,4 +1,6 @@
-
+---
+dg-publish: true
+---
 ## Learning Rate
 
 The learning rate indicates the step size that gradient descent takes towards local optima.

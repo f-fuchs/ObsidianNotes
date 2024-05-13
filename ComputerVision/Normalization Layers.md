@@ -1,3 +1,6 @@
+---
+dg-publish: true
+---
 ![[comparison_of_different_normalizations.svg|700]]
 ## Batch Norm
 
