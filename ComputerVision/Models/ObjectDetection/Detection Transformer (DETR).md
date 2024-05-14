@@ -4,7 +4,7 @@ dg-publish: true
 
 # Detection Transformer (DETR)
 
-DEtection TRansformer (DETR) is a model for [[Object Detection#Object Detection|Object Detection]]. It uses an encoder-decoder architecture wit a [[Convolutional Neural Networks (CNN)]] based vision backbone, a [[Transformer Encoder]] as encoder, a modified [[Transformer Decoder]] and a simple [[Feedforward Neural Network (FNN)|FNN]] that makes the final detection prediction.
+DEtection TRansformer (DETR) is a model for [[Object Detection#Object Detection|Object Detection]]. It uses an encoder-decoder architecture wit a [[Convolutional Neural Networks (CNN)]] based vision backbone, a [[Transformer#Transformer Encoder|Transformer Encoder]] as encoder, a modified [[Transformer#Transformer Decoder|Transformer Decoder]] and a simple [[Feedforward Neural Network (FNN)|FNN]] that makes the final detection prediction.
 
 ![[DETR.png]]
 
@@ -18,9 +18,7 @@ The decoder first applies a 1x1 convolution to reduces the channel dimension of 
 
 ![[DETR_Decoder.png]]
 
-The decoder follows the standard architecture of the transformer, transforming $K$ embeddings of size $d$ using multi-headed selfand encoder-decoder attention mechanisms. The difference with the original transformer is that all the embeddings are decoded in parallel at each decoder layer,
-
-while the original [[Transformer Decoder]] uses an autoregressive model that predicts the output sequence one element at a time. Since the decoder is also permutation-invariant, the input embeddings must be different to produce different results. These input embeddings are learnt positional encodings that are referred to as object queries, and similarly to the encoder, are added to the input of each attention layer.
+The decoder follows the standard architecture of the transformer, transforming $K$ embeddings of size $d$ using multi-headed self and encoder-decoder attention mechanisms. The difference with the original transformer is that all the embeddings are decoded in parallel at each decoder layer, while the original [[Transformer#Transformer Decoder|Transformer Decoder]] uses an autoregressive model that predicts the output sequence one element at a time. Since the decoder is also permutation-invariant, the input embeddings must be different to produce different results. These input embeddings are learnt positional encodings that are referred to as object queries, and similarly to the encoder, are added to the input of each attention layer.
 
 Query, Key and Value for the second Attention Layer:
 
