@@ -14,7 +14,9 @@ The source files of the notes are available on [GitHub](https://github.com/f-fuc
 ## Table of Contents
 
 ```dataview
-LIST 
+TABLE
+	join(rows.file.link, " | ") as Notes
 WHERE contains(file.folder, this.file.folder)
 SORT file.name ASC
+GROUP BY file.folder as Topic
 ```
