@@ -24,7 +24,9 @@ print(f"{b.shape =}")
 print(f"{(A @ x ).shape =}")
 ```
 
-
+%%
+add good illustration
+%%
 ## Matrix
 $$
 Y = X \times A^T + \vec{b} \times\vec{1}^T
