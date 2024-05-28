@@ -24,8 +24,8 @@ Each MLP block contains two fully-connected layers and a nonlinearity applied in
 
 $$
 \begin{align}
-U_{∗,i} &= X_{∗,i} + W_2 \sigma(W_1 LayerNorm(X_{∗,i})), \text{ for i }= 1 … C, \\
-Y_{j,∗} &= U_{j,∗} + W_4 \sigma(W_3 LayerNorm(U_{j,∗})), \text{ for j }= 1 … S.
+U_{∗,i} &= X_{∗,i} + W_2 \sigma \Bigl( W_1 \text{LayerNorm}(X_{∗,i}) \Bigr), \text{ for i }= 1 … C, \\
+Y_{j,∗} &= U_{j,∗} + W_4 \sigma \Bigl( W_3 \text{LayerNorm}(U_{j,∗}) \Bigr), \text{ for j }= 1 … S.
 \end{align}
 $$
 
