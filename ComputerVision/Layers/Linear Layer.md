@@ -23,6 +23,8 @@ print(f"{A.shape =}")
 print(f"{b.shape =}")
 print(f"{(A @ x ).shape =}")
 ```
+
+
 ## Matrix
 $$
 Y = X \times A^T + \vec{b} \times\vec{1}^T
