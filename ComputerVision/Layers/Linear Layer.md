@@ -3,7 +3,7 @@
 ## Element-wise
 
 $$
-\vec{y}=\vec{x} \times A^T+\vec{b}
+\vec{y}= A \times \vec{x}+\vec{b}
 $$
 - $\vec{x} \in \mathbb{R}^{H_{in}}$
 - $A \in \mathbb{R}^{H_{out} \times H_{in}}$, $A^T \in \mathbb{R}^{H_{in} \times H_{out}}$
@@ -14,15 +14,14 @@ $$
 import torch
 
 H_in, H_out = 5, 10
-x = torch.rand(H_in)
+x = torch.rand(H_in, 1) # one dimensional vectors in pytorch are row vectors
 A = torch.rand(H_out, H_in)
-b = torch.rand(H_out)
+b = torch.rand(H_out, 1) # one dimensional vectors in pytorch are row vectors
 
 print(f"{x.shape =}")
 print(f"{A.shape =}")
-print(f"{A.T.shape =}")
 print(f"{b.shape =}")
-print(f"{(x@A.T).shape =}")
+print(f"{(A @ x ).shape =}")
 ```
 ## Matrix
 $$
@@ -37,13 +36,15 @@ $$
 ```run-python
 import torch
 
-b = torch.tensor([[0], [1], [2], [3]])
-t = torch.tensor([[1], [1], [1], [1], [1]])
+H_in, H_out,  N = 5, 10, 100
+X = torch.rand(N, H_in) # one dimensional vectors in pytorch are row vectors
+A = torch.rand(H_out, H_in)
+b = torch.rand(H_out, 1) # one dimensional vectors in pytorch are row vectors
 
+print(f"{X.shape =}")
+print(f"{A.shape =}")
 print(f"{b.shape =}")
-print(f"{t.shape =}")
-print(f"{t.T.shape =}")
-print(f"{b @ t.T =}")
+print(f"{(X @ A.T).shape =}")
 ```
 ## Resources
 - https://pytorch.org/docs/stable/generated/torch.nn.Linear.html
