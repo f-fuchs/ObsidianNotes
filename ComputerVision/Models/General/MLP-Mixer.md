@@ -24,12 +24,12 @@ Each MLP block contains two fully-connected layers and a nonlinearity applied in
 
 $$
 \begin{align}
-U∗,i &= X∗,i + W2 σ(W1 LayerNorm(X)∗,i), for i = 1 … C, \\
-Yj,∗ &= Uj,∗ + W4 σ(W3 LayerNorm(U)j,∗), for j = 1 … S.
+U_{∗,i} &= X_{∗,i} + W_2 \sigma(W_1 LayerNorm(X_{∗,i})), \text{ for i }= 1 … C, \\
+Y_{j,∗} &= U_{j,∗} + W_4 \sigma(W_3 LayerNorm(U_{j,∗})), \text{ for j }= 1 … S.
 \end{align}
 $$
 
-Here σ is an element-wise nonlinearity (GELU [16]).
+Here $\sigma$ is an element-wise nonlinearity ([[GELU]]).
 ## Resources
 
 - https://arxiv.org/pdf/2105.01601 (MLP-Mixer: An all-MLP Architecture for Vision)
