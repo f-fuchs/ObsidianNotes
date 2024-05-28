@@ -1,3 +1,7 @@
+---
+dg-publish: true
+---
+
 # MLP-Mixer
 
 Modern deep vision architectures consist of layers that mix features $(i)$ at a given spatial location,

@@ -1,3 +1,7 @@
+---
+dg-publish: true
+---
+
 # Linear Layer
 
 ## Element-wise
@@ -5,6 +9,7 @@
 $$
 \vec{y}= A \times \vec{x}+\vec{b}
 $$
+
 - $\vec{x} \in \mathbb{R}^{H_{in}}$
 - $A \in \mathbb{R}^{H_{out} \times H_{in}}$, $A^T \in \mathbb{R}^{H_{in} \times H_{out}}$
 - $\vec{b} \in \mathbb{R}^{H_{out}}$
@@ -27,10 +32,13 @@ print(f"{(A @ x ).shape =}")
 %%
 add good illustration
 %%
+
 ## Matrix
+
 $$
 Y = X \times A^T + \vec{b} \times\vec{1}^T
 $$
+
 - $X \in \mathbb{R}^{N \times H_{in}}$
 - $A \in \mathbb{R}^{H_{out} \times H_{in}}$, $A^T \in \mathbb{R}^{H_{in} \times H_{out}}$
 - $\vec{b} \in \mathbb{R}^{H_{out}}$
@@ -50,5 +58,7 @@ print(f"{A.shape =}")
 print(f"{b.shape =}")
 print(f"{(X @ A.T).shape =}")
 ```
+
 ## Resources
-- https://pytorch.org/docs/stable/generated/torch.nn.Linear.html
+
+- <https://pytorch.org/docs/stable/generated/torch.nn.Linear.html>

@@ -1,3 +1,7 @@
+---
+dg-publish: true
+---
+
 # MetaFormer
 
 MetaFormer is a general architecture abstracted from [[Transformer]]s by not specifying the token mixer.
@@ -5,6 +9,7 @@ MetaFormer is a general architecture abstracted from [[Transformer]]s by not spe
 ![[metaformer.png]]
 
 ## Resources
-- https://openaccess.thecvf.com/content/CVPR2022/papers/Yu_MetaFormer_Is_Actually_What_You_Need_for_Vision_CVPR_2022_paper.pdf
-- https://github.com/sail-sg/poolformer
-- https://github.com/sail-sg/metaformer/tree/main
+
+- <https://openaccess.thecvf.com/content/CVPR2022/papers/Yu_MetaFormer_Is_Actually_What_You_Need_for_Vision_CVPR_2022_paper.pdf>
+- <https://github.com/sail-sg/poolformer>
+- <https://github.com/sail-sg/metaformer/tree/main>
