@@ -24,9 +24,9 @@ Each MLP block contains two fully-connected layers and a nonlinearity applied in
 
 $$
 \begin{align}
-U &= X + W_2 \times \sigma \Bigl( W_1 \times \text{LayerNorm}(X)^T \Bigr)
+U &= X + W_2^T \times \sigma \Bigl( W_1^T \times \text{LayerNorm}(X)^T \Bigr)
 \\
-Y &= U + W_4 \times \sigma \Bigl( W_3 \times \text{LayerNorm}(U) \Bigr)
+Y &= U + W_4^T \times \sigma \Bigl( W_3^T \times \text{LayerNorm}(U) \Bigr)
 \end{align}
 $$
 
