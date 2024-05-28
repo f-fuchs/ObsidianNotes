@@ -20,3 +20,17 @@ WHERE contains(file.folder, this.file.folder)
 SORT file.name ASC
 GROUP BY file.folder as Topic
 ```
+
+## TODOs
+
+ - [ ] Rework Attention Note
+ - [ ] Consistent mathematical notation between notes
+ - [ ] Incomplete Notes:
+	- [ ] CNN
+	- [ ] FNN
+	- [ ] Understanding Diffusion Models A Unified Perspective
+	- [ ] Generative Models
+	- [ ] Pooling Layers
+	- [ ] Stochastic Process
+	- [ ] Adam
+	- [ ] SGD

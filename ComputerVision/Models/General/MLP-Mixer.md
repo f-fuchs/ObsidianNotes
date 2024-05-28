@@ -16,10 +16,20 @@ original input image has resolution $(H, W )$, and each patch has resolution $(P
 	*similar to [[Vision Transformer]]*
 
 
-Mixer consists of multiple layers of identical size, and each layer consists of two MLP blocks. The first one is the token-mixing MLP: it acts on columns of $X$ (i.e. it is applied to a transposed input table X), maps $\mathbb{R}^S  \rightarrow \mathbb{R}^S$ , and is shared across all columns. The second one is the channel-mixing MLP: it
-acts on rows of X, maps RC 7 → RC , and is shared across all rows.
+Mixer consists of multiple layers of identical size, and each layer consists of two MLP blocks. The first one is the token-mixing MLP: it acts on columns of $X$ (i.e. it is applied to a transposed input table $X$), maps $\mathbb{R}^S  \rightarrow \mathbb{R}^S$ , and is shared across all columns. The second one is the channel-mixing MLP: it acts on rows of $X$, maps $\mathbb{R}^C  \rightarrow \mathbb{R}^C$, and is shared across all rows.
 
 ![[mixer_figure.png]]
+
+Each MLP block contains two fully-connected layers and a nonlinearity applied independently to each row of its input data tensor. Mixer layers can be written as follows (omitting layer indices):
+
+$$
+\begin{align}
+U∗,i &= X∗,i + W2 σ(W1 LayerNorm(X)∗,i), for i = 1 … C, \\
+Yj,∗ &= Uj,∗ + W4 σ(W3 LayerNorm(U)j,∗), for j = 1 … S.
+\end{align}
+$$
+
+Here σ is an element-wise nonlinearity (GELU [16]).
 ## Resources
 
 - https://arxiv.org/pdf/2105.01601 (MLP-Mixer: An all-MLP Architecture for Vision)
