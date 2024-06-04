@@ -16,11 +16,7 @@ $(ii)$ between different spatial locations, or both at once.
 	- self-attention layers allow both $(i)$ and $(ii)$
 	- MLP-blocks perform $(i)$
 
-The Mixer architecture clearly separates the per-location (channel-mixing) operations $(i)$ and cross-location (token-mixing) operations $(ii)$. Both operations are implemented with MLPs. Mixer takes as input a sequence of $S$ non-overlapping image patches, each one projected to a desired
-
-hidden dimension $C$. This results in a two-dimensional real-valued input table, $X \in \mathbb{R}^{S×C}$. If the
-
-original input image has resolution $(H, W)$, and each patch has resolution $(P, P)$, then the number of patches is $S = \frac{HW}{P^2}$. All patches are linearly projected with the same projection matrix.  
+The Mixer architecture clearly separates the per-location (channel-mixing) operations $(i)$ and cross-location (token-mixing) operations $(ii)$. Both operations are implemented with MLPs. Mixer takes as input a sequence of $S$ non-overlapping image patches, each one projected to a desired hidden dimension $C$. This results in a two-dimensional real-valued input table, $X \in \mathbb{R}^{S×C}$. If the original input image has resolution $(H, W)$, and each patch has resolution $(P, P)$, then the number of patches is $S = \frac{HW}{P^2}$. All patches are linearly projected with the same projection matrix.  
 	*similar to [[Vision Transformer]]*
 
 Mixer consists of multiple layers of identical size, and each layer consists of two MLP blocks. The first one is the token-mixing MLP: it acts on columns of $X$ (i.e. it is applied to a transposed input table $X$), maps $\mathbb{R}^S  \rightarrow \mathbb{R}^S$, and is shared across all columns. The second one is the channel-mixing MLP: it acts on rows of $X$, maps $\mathbb{R}^C  \rightarrow \mathbb{R}^C$, and is shared across all rows.
@@ -52,13 +48,7 @@ $$
 
 $D_S$ and $D_C$ are tunable hidden widths in the token-mixing and channel-mixing MLPs, respectively. Note that DS is selected independently of the number of input patches. Therefore, the computational complexity of the network is linear in the number of input patches, unlike [[Vision Transformer|ViT]] whose complexity is quadratic. Since $D_C$ is independent of the patch size, the overall complexity is linear in the number of pixels in the image, as for a typical [[Convolutional Neural Networks (CNN)|CNN]].
 
-The same channel-mixing MLP (token-mixing MLP) is applied to every row (column) of X. Tying the parameters of the channel-mixing MLPs (within each layer) is a natural choice - it provides positional invariance, a prominent feature of convolutions.
-
-However, tying parameters across channels (for the token-mixing MLP) is much less common.
-
-The parameter tying prevents the architecture from growing too fast when increasing the hidden dimension $C$ or the sequence length $S$ and leads to significant memory savings.
-
-Each layer in Mixer (except for the initial patch projection layer) takes an input of the same size similar to [[Vision Transformer|ViT]] and [[MetaFormer]].
+The same channel-mixing MLP (token-mixing MLP) is applied to every row (column) of X. Tying the parameters of the channel-mixing MLPs (within each layer) is a natural choice - it provides positional invariance, a prominent feature of convolutions. However, tying parameters across channels (for the token-mixing MLP) is much less common. The parameter tying prevents the architecture from growing too fast when increasing the hidden dimension $C$ or the sequence length $S$ and leads to significant memory savings. Each layer in Mixer (except for the initial patch projection layer) takes an input of the same size similar to [[Vision Transformer|ViT]] and [[MetaFormer]].
 
 ## Resources
 
