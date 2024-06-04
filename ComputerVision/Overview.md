@@ -34,3 +34,20 @@ GROUP BY file.folder as Topic
 	- [ ] Stochastic Process
 	- [ ] Adam
 	- [ ] SGD
+- [ ] New Topics:
+	- [ ] Segment Anything:
+		- [ ] <https://github.com/facebookresearch/segment-anything>
+		- [ ] <https://github.com/SysCV/sam-hq>
+		- [ ] <https://github.com/pytorch-labs/segment-anything-fast>
+		- [ ] <https://github.com/IDEA-Research/Grounded-Segment-Anything>
+	- [ ] Mamba:
+		- [ ] <https://github.com/MzeroMiko/VMamba>
+		- [ ] <https://github.com/kyegomez/VisionMamba>
+		- [ ] <https://github.com/wurenkai/UltraLight-VM-UNet/>
+		- [ ] <https://github.com/JCruan519/VM-UNet>
+	- [ ] Diffusion:
+		- [ ] <https://arxiv.org/abs/2208.11970> (Understanding Diffusion Models: A Unified Perspective)
+	- [ ] General:
+		- [ ] <https://github.com/zengwang430521/TCFormer>
+		- [ ] <https://github.com/sunjiahao1999/SPFormer>
+		- [ ] <https://github.com/CSAILVision/unifiedparsing>
