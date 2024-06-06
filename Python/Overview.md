@@ -1,0 +1,3 @@
+- https://pre-commit.com/
+- https://hatch.pypa.io/latest/
+- https://docs.kidger.site/jaxtyping/
