@@ -10,21 +10,10 @@ Position embeddings $X_{pos} \in \mathbb{R}^{N \times D}$ are added to the patch
 
 ## Classification
 
-Similar to BERT’s [class] token, the original Vision Transformer prepends a learnable embedding to the sequence of embedded patches ($z^0_0 = x_{class}$), whose state at the output of the Transformer encoder ($z^0_L$) serves as the image representation $y$. Both during pre-training and fine-tuning, a classification head is attached to $z^0_L$. (*Using a “blank slate” token as the sole input to a classification head pushes the transformer to learn to encode a “general representation” of the entire image into that embedding. The model must do this to enable accurate classifier predictions.*) The classification head is implemented by a [[Feedforward Neural Network (FNN)#Multilayer Perceptron (MLP)|MLP]] with one hidden layer at pre-training time and by a single linear layer at fine-tuning time.
+Similar to BERT's [class] token, the original Vision Transformer prepends a learnable embedding to the sequence of embedded patches ($z^0_0 = x_{class}$), whose state at the output of the Transformer encoder ($z^0_L$) serves as the image representation $y$. Both during pre-training and fine-tuning, a classification head is attached to $z^0_L$. (*Using a "blank slate" token as the sole input to a classification head pushes the transformer to learn to encode a "general representation" of the entire image into that embedding. The model must do this to enable accurate classifier predictions.*) The classification head is implemented by a [[Feedforward Neural Network (FNN)#Multilayer Perceptron (MLP)|MLP]] with one hidden layer at pre-training time and by a single linear layer at fine-tuning time.
 
 ![[vision-transformer.svg|700]]
 
 # Resources
 
-## Used
-
-- Paper:
-	- <https://arxiv.org/pdf/2010.11929.pdf>
-
-## Interesting other Resources
-
-- Paper:
-- GitHub:
-	- <https://github.com/dk-liang/Awesome-Visual-Transformer>
-- Tutorials:
-	- <https://uvadlc-notebooks.readthedocs.io/en/latest/tutorial_notebooks/tutorial15/Vision_Transformer.html>
+- <https://arxiv.org/pdf/2010.11929.pdf>
