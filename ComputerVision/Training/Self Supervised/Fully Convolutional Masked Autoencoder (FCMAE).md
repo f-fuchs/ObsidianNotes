@@ -14,6 +14,10 @@ One challenge in masked image modeling is preventing models from copying and pas
 
 ## Decoder Design
 
-The decoder consist of just a plain [[ConvNeXt#ConvNeXt Block|ConvNeXt block]]. This forms an asymmetric encoder decoder architecture overall, as the encoder is heavier and has a hierarchy. More complex decoder design were considered but did not offer any advantages.
+The decoder consist of just a plain [[ConvNeXt#ConvNeXt Block|ConvNeXt block]] with dimension 512. This forms an asymmetric encoder decoder architecture overall, as the encoder is heavier and has a hierarchy. More complex decoder design were considered but did not offer any advantages, see tables below.
 
 ![[fcmae_decoder.png]]
+
+## Reconstruction Target
+
+Similar to [[Masked Autoencoder (MAE)|MAE]], the target is a patch-wise normalized image of the original input, and the loss is applied only on the masked patches. The mean squared error (MSE) between the reconstructed and target images is used as loss.
