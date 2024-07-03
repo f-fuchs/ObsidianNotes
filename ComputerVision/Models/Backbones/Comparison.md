@@ -1,7 +1,5 @@
 # Comparison
 
-## IN-1K Pre-training
-
 | name             | model                                         | params | Resolution | acc@1 (INet-1k) | training dataset | training method                                                     |
 | ---------------- | --------------------------------------------- | ------ | ---------- | --------------- | ---------------- | ------------------------------------------------------------------- |
 | ConvNeXt V2      | ConvNeXt V2-H                                 | 660M   | 512x512    | 88.9            | IN-22K           | FCMAE + finetuning                                                  |
