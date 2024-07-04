@@ -52,18 +52,19 @@ In addition to the parameters above, dilated convolution introduce a dilation $d
 
 ## Convolutions in Machine Learning
 
-A multi channel convolution with multiple input channels can be understood as a three dimensional tensor (gray in the image below) that gets multiplied elementwise with three dimensional chunks of the input image and then gets summed over all dimension, which results in one value per image chunk. *(We basically take a weighted sum of the three dimensional chunk)*. **This means that for each output channel we need one three dimensional tensors or kernel**.
+A multi-channel convolution with multiple input channels can be visualized as a three-dimensional tensor (as shown in gray in the image below). This tensor is multiplied element-wise with three-dimensional chunks of the input image and then summed over all dimensions, resulting in one value per image chunk. *(Essentially, we take a weighted sum of the three-dimensional chunk)*. **Therefore, for each output channel, we need one three-dimensional tensor or kernel**.
 
-*This is still 2D convolution because the strides of the filter are along the height and width dimensions only (**NOT** depth). The number of movement directions of the filter determines the dimensions of convolution.*
+*This remains a 2D convolution because the filter strides are only along the height and width dimensions (**NOT** depth). The number of movement directions of the filter determines the dimensions of convolution*
 
 | Standard Convolution    | Depthwise Convolution          |
 | ----------------------- | ------------------------------ |
 | ![[conv2d-3d.svg\|270]] | ![[conv2d-depthwise.svg\|400]] |
 
-Depthwise convolutions are a variation on the operation discussed so far. In the regular 2D convolution performed over multiple input channels, the filter is as deep as the input and lets us freely mix channels to generate each element in the output. Depthwise convolutions don't do that - each channel is kept separate - hence the name *depthwise*.
+Depthwise convolutions are a variation of the operation described above. In a standard 2D convolution with multiple input channels, the filter matches the depth of the input and allows channels to mix freely to generate each element in the output. In contrast, depthwise convolutions keep each channel separate, hence the name depthwise.
 
 ## Sources
 
-- <https://github.com/vdumoulin/conv_arithmetic/blob/master/README.md>
-- <https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html>
-- <https://pytorch.org/docs/stable/generated/torch.nn.ConvTranspose2d.html>
+- [GitHub - vdumoulin/conv_arithmetic: A technical report on convolution arithmetic in the context of deep learning](https://github.com/vdumoulin/conv_arithmetic)
+- [Depthwise separable convolutions for machine learning - Eli Bendersky's website (thegreenplace.net)](https://eli.thegreenplace.net/2018/depthwise-separable-convolutions-for-machine-learning/)
+- [ConvTranspose2d — PyTorch 2.3 documentation](https://pytorch.org/docs/stable/generated/torch.nn.ConvTranspose2d.html)
+- [Conv2d — PyTorch 2.3 documentation](https://pytorch.org/docs/stable/generated/torch.nn.Conv2d.html)
