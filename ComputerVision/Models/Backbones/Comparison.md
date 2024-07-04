@@ -1,3 +1,7 @@
+---
+dg-publish: true
+---
+
 # Comparison
 
 | name             | model                                         | params | Resolution | acc@1 (INet-1k) | training dataset | training method                                                     |

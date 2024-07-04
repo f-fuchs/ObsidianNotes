@@ -4,7 +4,7 @@ dg-publish: true
 
 # Segment Everything Everywhere All at Once
 
-*SEEM* uses a generic encoder-decoder architecture.  
+*SEEM* uses a generic encoder-decoder architecture.
 ![[SEEM.svg|700]]
 The encoder encompasses the:
 - Image Encoder,

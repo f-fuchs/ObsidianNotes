@@ -32,4 +32,4 @@ There's a relationship between batch size and generalization performance. Smalle
 
 ## Number of Iterations
 
-Number of forward/backward passes, each pass using [[Training Hyperparameters#Batch Size| batch size]] number of examples.
+Number of forward/backward passes, each pass using [[Training Hyperparameters#Batch Size|batch size]] number of examples.

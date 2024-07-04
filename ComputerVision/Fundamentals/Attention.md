@@ -8,7 +8,7 @@ dg-publish: true
 
 ### Theory
 
-The fundamental operation of any transformer architecture is the *self-attention* operation. Self-attention is a sequence-to-sequence operation: a sequence of vectors goes in, and a sequence of vectors comes out. Let’s call the input vectors $\vec{𝐱_1},\vec{𝐱_2},…,\vec{𝐱_t}$ and the corresponding output vectors $\vec{y_1},\vec{y_2},…,\vec{y_t}$. The vectors all have dimension $k$.
+The fundamental operation of any transformer architecture is the *self-attention* operation. Self-attention is a sequence-to-sequence operation: a sequence of vectors goes in, and a sequence of vectors comes out. Let's call the input vectors $\vec{𝐱_1},\vec{𝐱_2},…,\vec{𝐱_t}$ and the corresponding output vectors $\vec{y_1},\vec{y_2},…,\vec{y_t}$. The vectors all have dimension $k$.
 
 To produce output vector $\vec{𝐲_i}$, the self attention operation simply takes *a weighted average over all the input vectors* $\vec{𝐲_i}=\sum_{j=1}^{t} w_{ij} \vec{𝐱_j}$. Where the weights sum to one over all $j$. The weight $w_{ij}$ is not a parameter, as in a normal neural net, but it is *derived* from a function over $\vec{𝐱_i}$ and $\vec{𝐱_j}$. The simplest option for this function is the dot product:
 
@@ -30,13 +30,13 @@ If we combine our sequence of vectors to a matrix $X=\begin{bmatrix} \vec{𝐱_1
 
 ### Intuition
 
-Let’s say we are faced with a sequence of words. To apply self-attention, we simply assign each word $t$ in our vocabulary an *embedding vector* $\vec{x_t}$ (the values of which we’ll learn). This is what’s known as an *embedding layer* in sequence modeling. It turns the word sequence the,cat,walks,on,the,street into the vector sequence $\vec{x}_{the}$, $\vec{x}_{cat}$, $\vec{x}_{walks}$, $\vec{x}_{on}$, $\vec{x}_{the}$, $\vec{x}_{street}$.
+Let's say we are faced with a sequence of words. To apply self-attention, we simply assign each word $t$ in our vocabulary an *embedding vector* $\vec{x_t}$ (the values of which we'll learn). This is what's known as an *embedding layer* in sequence modeling. It turns the word sequence the,cat,walks,on,the,street into the vector sequence $\vec{x}_{the}$, $\vec{x}_{cat}$, $\vec{x}_{walks}$, $\vec{x}_{on}$, $\vec{x}_{the}$, $\vec{x}_{street}$.
 
 If we feed this sequence into a self-attention layer, the output is another sequence of vectors $\vec{y}_{the}$, $\vec{y}_{cat}$, $\vec{y}_{walks}$, $\vec{y}_{on}$, $\vec{y}_{the}$, $\vec{y}_{street}$, where $\vec{y}_{cat}$ is a weighted sum over all the embedding vectors in the first sequence, weighted by their (normalized) dot-product with $\vec{x}_{cat}$.
 
 Since we are *learning* what the values in $\vec{x_t}$ should be, how "related" two words are is entirely determined by the task. In most cases, the definite article *the* is not very relevant to the interpretation of the other words in the sentence; therefore, we will likely end up with an embedding $\vec{x_t}$ that has a low or negative dot product with all other words. On the other hand, to interpret what *walks* means in this sentence, it's very helpful to work out *who* is doing the walking. This is likely expressed by a noun, so for nouns like *cat* and verbs like *walks*, we will likely learn embeddings $\vec{x}_{cat}$ and $\vec{x}_{walks}$ that have a high, positive dot product together.
 
-This is the basic intuition behind self-attention. The dot product expresses how related two vectors in the input sequence are, with “related” defined by the learning task, and the output vectors are weighted sums over the whole input sequence, with the weights determined by these dot products.
+This is the basic intuition behind self-attention. The dot product expresses how related two vectors in the input sequence are, with "related" defined by the learning task, and the output vectors are weighted sums over the whole input sequence, with the weights determined by these dot products.
 
 ### Properties
 
@@ -93,9 +93,9 @@ $$
 
 #### 3. Multi-head Attention
 
-Finally, we must account for the fact that a word can mean different things to different neighbors. Consider the following example: mary,gave,roses,to,susan. We see that the word *gave* has different relations to different parts of the sentence: *mary* expresses who’s doing the giving, *roses* expresses what’s being given, and *susan* expresses who the recipient is.
+Finally, we must account for the fact that a word can mean different things to different neighbors. Consider the following example: mary,gave,roses,to,susan. We see that the word *gave* has different relations to different parts of the sentence: *mary* expresses who's doing the giving, *roses* expresses what's being given, and *susan* expresses who the recipient is.
 
-In a single self-attention operation, all this information just gets summed together. The inputs $\vec{x}_{mary}$ and $\vec{x}_{susan}$ can influence the output $\vec{y}_{gave}$ by different amounts, depending on their dot-product with $\vec{x}_{gave}$, but they can’t influence it *in different ways*. If, for instance, we want the information about who gave the roses and who received them to end up in different parts of $\vec{y}_{gave}$, we need a little more flexibility.
+In a single self-attention operation, all this information just gets summed together. The inputs $\vec{x}_{mary}$ and $\vec{x}_{susan}$ can influence the output $\vec{y}_{gave}$ by different amounts, depending on their dot-product with $\vec{x}_{gave}$, but they can't influence it *in different ways*. If, for instance, we want the information about who gave the roses and who received them to end up in different parts of $\vec{y}_{gave}$, we need a little more flexibility.
 
 We can give the self attention greater power of discrimination, by combining several self-attention mechanisms (which we'll index with $h$), each with different matrices $W^h_q$, $W^h_k$, $W^h_v$. These are called *attention heads*. For input $\vec{x}_{i}$ each attention head produces a different output vector $\vec{y}_{i}^{h}$. We concatenate these, and pass them through a linear transformation to reduce the dimension back to $k$.
 
