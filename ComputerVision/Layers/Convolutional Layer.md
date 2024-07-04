@@ -56,7 +56,7 @@ A multi channel convolution with multiple input channels can be understood as a 
 
 *This is still 2D convolution because the strides of the filter are along the height and width dimensions only (**NOT** depth). The number of movement directions of the filter determines the dimensions of convolution.*
 
-![[multi_channel_convolution.jpg|700]]
+![[conv2d-3d.svg|300]]
 
 ## Sources
 
