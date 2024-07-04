@@ -4,11 +4,11 @@ dg-publish: true
 
 # Convolutional Layer
 
-## Animations
+## 2D Convolutions
 
 *Blue maps are inputs of shape ($n, n$), cyan maps are outputs of shape ($m,m$) and the shaded areas are the kernels of shape ($k,k$) with stride $s$ and padding $p$.*
 
-### Convolution Animations
+### Convolution
 
 The output shape $(m,m)$ can be calculated with $m=\lfloor\frac{n+2p-(k-1)-1}{s}+1\rfloor$.
 
@@ -22,7 +22,7 @@ The output shape $(m,m)$ can be calculated with $m=\lfloor\frac{n+2p-(k-1)-1}{s}
 | $n=5, k=3,s=1, p=2$                                 | $n=5, k=3,s=2, p=0$                                 | $n=5,k=3,s=2,p=1$                                   |
 | $m=\lfloor\frac{5+2 \cdot 2-(3-1)-1}{1}+1\rfloor=7$ | $m=\lfloor\frac{5+2 \cdot 0-(3-1)-1}{2}+1\rfloor=2$ | $m=\lfloor\frac{5+2 \cdot 1-(3-1)-1}{2}+1\rfloor=3$ |
 
-### Transposed Convolution Animations
+### Transposed Convolution
 
 The output shape $(m,m)$ can be calculated with $m=(n-1) \cdot s-2 \cdot p+ k$.
 
@@ -50,7 +50,7 @@ In addition to the parameters above, dilated convolution introduce a dilation $d
 | $n=7, k=3,s=1, p=0, d=2$                                      |
 | $m=\lfloor\frac{7+2 \cdot 0 - 2 \cdot (3-1)-1}{1}+1\rfloor=3$ |
 
-## Multi Channel Convolution
+## 3(4)D Convolutions
 
 A multi channel convolution with multiple input channels can be understood as a three dimensional tensor (gray in the image below) that gets multiplied elementwise with three dimensional chunks of the input image and then gets summed over all dimension, which results in one value per image chunk. *(We basically take a weighted sum of the three dimensional chunk)*.This means that for each output channel we need one three dimensional tensors or kernel.
 
