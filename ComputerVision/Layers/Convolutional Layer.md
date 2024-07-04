@@ -52,11 +52,13 @@ In addition to the parameters above, dilated convolution introduce a dilation $d
 
 ## Convolutions in Machine Learning
 
-A multi channel convolution with multiple input channels can be understood as a three dimensional tensor (gray in the image below) that gets multiplied elementwise with three dimensional chunks of the input image and then gets summed over all dimension, which results in one value per image chunk. *(We basically take a weighted sum of the three dimensional chunk)*.This means that for each output channel we need one three dimensional tensors or kernel.
+A multi channel convolution with multiple input channels can be understood as a three dimensional tensor (gray in the image below) that gets multiplied elementwise with three dimensional chunks of the input image and then gets summed over all dimension, which results in one value per image chunk. *(We basically take a weighted sum of the three dimensional chunk)*. **This means that for each output channel we need one three dimensional tensors or kernel**.
 
 *This is still 2D convolution because the strides of the filter are along the height and width dimensions only (**NOT** depth). The number of movement directions of the filter determines the dimensions of convolution.*
 
 ![[conv2d-3d.svg|300]]
+
+
 
 ## Sources
 
