@@ -50,7 +50,7 @@ In addition to the parameters above, dilated convolution introduce a dilation $d
 | $n=7, k=3,s=1, p=0, d=2$                                      |
 | $m=\lfloor\frac{7+2 \cdot 0 - 2 \cdot (3-1)-1}{1}+1\rfloor=3$ |
 
-## 3(4)D Convolutions
+## Convolutions in Machine Learning
 
 A multi channel convolution with multiple input channels can be understood as a three dimensional tensor (gray in the image below) that gets multiplied elementwise with three dimensional chunks of the input image and then gets summed over all dimension, which results in one value per image chunk. *(We basically take a weighted sum of the three dimensional chunk)*.This means that for each output channel we need one three dimensional tensors or kernel.
 
