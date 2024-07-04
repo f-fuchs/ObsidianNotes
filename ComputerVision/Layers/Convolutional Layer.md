@@ -56,9 +56,11 @@ A multi channel convolution with multiple input channels can be understood as a 
 
 *This is still 2D convolution because the strides of the filter are along the height and width dimensions only (**NOT** depth). The number of movement directions of the filter determines the dimensions of convolution.*
 
-![[conv2d-3d.svg|300]]
+| Standard Convolution    | Depthwise Convolution          |
+| ----------------------- | ------------------------------ |
+| ![[conv2d-3d.svg\|270]] | ![[conv2d-depthwise.svg\|400]] |
 
-
+Depthwise convolutions are a variation on the operation discussed so far. In the regular 2D convolution performed over multiple input channels, the filter is as deep as the input and lets us freely mix channels to generate each element in the output. Depthwise convolutions don't do that - each channel is kept separate - hence the name *depthwise*.
 
 ## Sources
 
