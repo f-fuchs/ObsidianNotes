@@ -25,7 +25,9 @@ Building on the success of ConvNeXt the authors have released an updated version
 
 However, training the ConvNeXt V1 in this way resulted in feature collapse, i.e. there were many dead or saturated feature maps and activation became redundant across channels. In the figure below, the feature cosine distance is plotted and the severe feature collapse behaviour of the ConvNeXt V1 FCMAE pre-trained model can be observed. The supervised model also shows a reduction in feature diversity, but only in the final layers. This decrease in diversity in the supervised model is likely due to the use of cross-entropy loss, which encourages the model to focus on class-discriminative features while suppressing the others.
 ![[convnext_feature_collapse.png]]
-To combat this feature collapse ConvNeXt V2 introduces Global Response Normalization.
+To combat this feature collapse ConvNeXt V2 replaces the original Layer Scale with Global Response Normalization.
+
+![[convnext_block_v1_v2.png]]
 
 ### Global Response Normalization (GRN)
 
@@ -45,8 +47,27 @@ To aggregate a spatial feature map $X_i$ into a vector $gx$ the global function 
 Next, a response normalization function $N(·)$ is applied to the aggregated values. Concretely, we use a standard divisive normalization as follows:
 
 $$
-N(||X_i||_2) := ||X_i|| \in \mathbb{R} \rightarrow \frac{||X_i||}{\sum_{j=1}^C ||X_j||} \in \mathbb{R}
+N(||X_i||_2) := ||X_i||_2 \in \mathbb{R} \rightarrow \frac{||X_i||_2}{\sum_{j=1}^C ||X_j||_2} \in \mathbb{R}
 $$
+
+Intuitively, for the i-th channel, this computes its relative importance compared to all the other channels. Similar to other forms of normalization this step creates a feature competition across channels by mutual inhibition.
+
+#### Feature Calibration
+
+Finally, the original input responses are calibrated using the computed feature normalization scores:
+
+$$
+X_i = X_i ∗ N(G(X)_i) \in \mathbb{R}^{H \times W}
+$$
+
+To ease optimization, two additional learnable parameters, $\gamma$ and $\beta$, are added and initialized to zero. Additionally, a residual connection between the input and output of the GRN layer is added. The resulting final GRN block is:
+
+$$
+X_i =\gamma ∗ X_i ∗ N(G(X)_i)+\beta+X_i.
+$$
+
+This setup allows a GRN layer to initially perform an identity function and gradually adapt
+during training.
 
 ## Resources
 
