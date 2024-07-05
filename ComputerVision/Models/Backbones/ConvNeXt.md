@@ -27,6 +27,29 @@ However, training the ConvNeXt V1 in this way resulted in feature collapse, i.e.
 ![[convnext_feature_collapse.png]]
 To combat this feature collapse ConvNeXt V2 introduces Global Response Normalization.
 
+### Global Response Normalization (GRN)
+
+Given an input feature, $X \in \mathbb{R}^{H×W×C}$, the proposed GRN unit consists of three
+steps:
+
+1. global feature aggregation,
+2. feature normalization,
+3. feature calibration.
+
+#### Global Feature Aggregation
+
+To aggregate a spatial feature map $X_i$ into a vector $gx$ the global function $G(X) := X \in \mathbb{R}^{H \times W \times C} \rightarrow gx \in \mathbb{R}^{C}$ is used. This can be viewed as a simple pooling layer. Concretely, a norm-based feature aggregation, specifically the $L2$-norm is used. This results in a set of aggregated values $G(X) = gx = \begin{bmatrix}||X_1||_2 \\ ||X_2||_2\\ … \\ ||X_C||_2\end{bmatrix} \in \mathbb{R}^{C}$, where $||X_i||_2$ is a scalar that aggregates the statistics of the i-th channel.
+
+#### Feature Normalization
+
+Next, a response normalization function $N(·)$ is applied to the aggregated values. Concretely, we use a standard divisive normalization as follows:
+
+$$
+N(||X_i||_2) := ||X_i|| \in \mathbb{R} \rightarrow \frac{||X_i||}
+j=1,…,C ||Xj||
+∈ R
+$$
+
 ## Resources
 
 - [GitHub - facebookresearch/ConvNeXt: Code release for ConvNeXt model](https://github.com/facebookresearch/ConvNeXt?tab=readme-ov-file)
