@@ -45,9 +45,7 @@ To aggregate a spatial feature map $X_i$ into a vector $gx$ the global function 
 Next, a response normalization function $N(·)$ is applied to the aggregated values. Concretely, we use a standard divisive normalization as follows:
 
 $$
-N(||X_i||_2) := ||X_i|| \in \mathbb{R} \rightarrow \frac{||X_i||}
-j=1,…,C ||Xj||
-∈ R
+N(||X_i||_2) := ||X_i|| \in \mathbb{R} \rightarrow \frac{||X_i||}{\sum_{j=1}^C ||X_j||} \in \mathbb{R}
 $$
 
 ## Resources
