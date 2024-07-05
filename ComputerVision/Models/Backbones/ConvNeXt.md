@@ -44,10 +44,10 @@ To aggregate a spatial feature map $X_i$ into a vector $gx$ the global function 
 
 #### Feature Normalization
 
-Next, a response normalization function $N(·)$ is applied to the aggregated values. Concretely, we use a standard divisive normalization as follows:
+Next, a response normalization function $N(·)$ is applied to the aggregated values. Concretely, we use a divisive normalization scaled by channel count as follows:
 
 $$
-N(||X_i||_2) := ||X_i||_2 \in \mathbb{R} \rightarrow \frac{||X_i||_2}{\sum_{j=1}^C ||X_j||_2} \in \mathbb{R}
+N(||X_i||_2) := ||X_i||_2 \in \mathbb{R} \rightarrow \frac{||X_i||_2}{\sum_{j=1}^C ||X_j||_2} \cdot C\in \mathbb{R}
 $$
 
 Intuitively, for the i-th channel, this computes its relative importance compared to all the other channels. Similar to other forms of normalization this step creates a feature competition across channels by mutual inhibition.
