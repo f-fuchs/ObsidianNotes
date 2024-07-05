@@ -15,6 +15,6 @@ This implies that instead of focusing on the center of mass, it is necessary to 
 ![[fourier_transform_center_mass_scaled.png]]
 
 In physical terms, this has the effect that when a certain frequency persists for a long time, the magnitude of the Fourier transform at that frequency is scaled up more and more. To illustrate this, consider the image below, which shows a pure frequency of two beats per second being wound up at two cycles per second. Regardless of the duration of the signal, the centre of mass remains approximately constant. It is merely tracing the same shape.
-![[fourier_transform_center_mass_corret_frequency.png]]
+![[fourier_transform_center_mass_corret_fctrequency.png]]
 However, the genuine Fourier transform differs from our approximate Fourier transform in that the longer the signal persists, the greater the value of the Fourier transform at that frequency. For other winding frequencies, however, even those that are merely slightly different from 2, the effect of increasing the duration is negated by the fact that for longer time intervals, the wound-up graph is afforded a greater opportunity to achieve equilibrium around the circle.
 ![[fourier_transform_center_mass_wrong_frequency.png]]
