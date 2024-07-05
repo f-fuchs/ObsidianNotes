@@ -1,5 +1,7 @@
 # Fourier Transform
 
+## A Visual Introduction
+
 Euler's formula demonstrates that if we were to take the exponential function of a complex number $e^{in}, n \in \mathbb{R}$ we would find ourselves on the point we would reach by walking counterclockwise $n$ units along a circle of radius 1 in the complex plane. This allows us to describe the process of rotating at a rate of $f$ cycles per second simply as $e^{2\pi ift}$, where $2\pi$ represents the full circumference of the circle, $f$ the desired frequency and $t$ is a variable for time. Therefore providing us a convenient notation for describing the winding of a circle. However, the convention for Fourier transforms is that the direction of movement is clockwise, rather than counterclockwise. Consequently, we will employ the following notation: $e^{-2\pi ift}$.
 
 ![[euler_formula_circle.png|300]]
@@ -15,6 +17,12 @@ This implies that instead of focusing on the center of mass, it is necessary to 
 ![[fourier_transform_center_mass_scaled.png]]
 
 In physical terms, this has the effect that when a certain frequency persists for a long time, the magnitude of the Fourier transform at that frequency is scaled up more and more. To illustrate this, consider the image below, which shows a pure frequency of two beats per second being wound up at two cycles per second. Regardless of the duration of the signal, the centre of mass remains approximately constant. It is merely tracing the same shape.
-![[fourier_transform_center_mass_corret_fctrequency.png]]
+![[fourier_transform_center_mass_corret_frequency.png]]
 However, the genuine Fourier transform differs from our approximate Fourier transform in that the longer the signal persists, the greater the value of the Fourier transform at that frequency. For other winding frequencies, however, even those that are merely slightly different from 2, the effect of increasing the duration is negated by the fact that for longer time intervals, the wound-up graph is afforded a greater opportunity to achieve equilibrium around the circle.
-![[fourier_transform_center_mass_wrong_frequency.png]]
+![[fourier_transform_center_mass_incorret_frequency.png]]
+To summarize, The Fourier transform of an intensity versus time function, such as $g(t)$, is a new function $\hat{g}(f)$ that doesn't take time as an input, but instead takes a frequency. The output of this new function is a complex number, a point in the 2D plane, corresponding to the strength of a given frequency in the original signal.
+![[fourier_transform.png]]
+
+## Resources
+
+- [3Blue1Brown - But what is the Fourier Transform? A visual introduction.](https://www.3blue1brown.com/lessons/fourier-transforms)
