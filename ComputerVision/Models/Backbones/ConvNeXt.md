@@ -69,6 +69,10 @@ $$
 This setup allows a GRN layer to initially perform an identity function and gradually adapt
 during training.
 
+%%
+Why is X multiplied by its relative importance and not by the inverse of it?
+%%
+
 ## Resources
 
 - [GitHub - facebookresearch/ConvNeXt: Code release for ConvNeXt model](https://github.com/facebookresearch/ConvNeXt?tab=readme-ov-file)
