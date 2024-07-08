@@ -13,7 +13,7 @@ for (const page of pages) {
     // Read the file contents
     const contents = await app.vault.read(file)
     // Extract the summary via regex
-    for (const callout of contents.match(new RegExp(regex, 'sg'))) {
+    for (const callout of contents.match(new RegExp(regex, 'sg')) || []) {
 	    const match = callout.match(new RegExp(regex, 's')) 
 	    rows.push([match[1], match[2], page.file.link])
     }

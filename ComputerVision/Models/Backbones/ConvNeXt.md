@@ -69,9 +69,8 @@ $$
 This setup allows a GRN layer to initially perform an identity function and gradually adapt
 during training.
 
-%%
-Why is X multiplied by its relative importance and not by the inverse of it?
-%%
+> [!question]
+> Why is X multiplied by its relative importance and not by the inverse of it?
 
 ## Resources
 
