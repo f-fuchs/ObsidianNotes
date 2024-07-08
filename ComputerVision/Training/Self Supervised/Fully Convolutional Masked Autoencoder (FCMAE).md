@@ -22,6 +22,9 @@ The decoder consist of just a plain [[ConvNeXt#ConvNeXt Block|ConvNeXt block]] w
 
 ![[fcmae_decoder.png]]
 
+> [!question]
+> Relationship between decoder depth and linear probing performance? For [[Masked Autoencoder (MAE)]] one block seems fine for fine tuning but more are needed for linear probing.
+
 ## Reconstruction Target
 
 Similar to [[Masked Autoencoder (MAE)|MAE]], the target is a patch-wise normalized image of the original input, and the loss is applied only on the masked patches. The mean squared error (MSE) between the reconstructed and target images is used as loss.
