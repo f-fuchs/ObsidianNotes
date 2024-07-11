@@ -24,7 +24,7 @@ The final layer of the decoder is a linear projection whose number of output cha
 
 ## Reconstruction Target
 
-The loss function computes the mean square error (MSE) between the reconstructed and patch-normalized (computing the mean and standard deviation of all pixels in a patch and using them to normalize that patch) original images in pixel space.
+The loss function computes the mean square error (MSE, L2) between the reconstructed and patch-normalized (computing the mean and standard deviation of all pixels in a patch and using them to normalize that patch) original images in pixel space.
 
 ## Data Augmentation
 
