@@ -16,6 +16,22 @@ DINO is a simple self-supervised training method that can be interpreted as a fo
 |:-------------------------------------------:|
 | Illustration of the DINO training workflow. |
 
+### Mathematical Formulation
+
+Knowledge distillation is a learning paradigm where a student network $g_{\theta_s}$ is trained
+to match the output of a given teacher network $g_{\theta_t}$ , parameterized by $\theta_s$ and $\theta_t$ respectively.
+Given an input image $X$, both networks output probability distributions over $K$ dimensions denoted by $P_s$ and $P_t$. The probability $P$ is obtained by normalizing the output of the network $g$ with a softmax function. More precisely,
+$$
+P_s(x)^{(i)} = \frac{\exp \left(\frac{g_{\theta_s}(x)^{(i)}}{\tau_s}\right)}{\sum_{k=1}^K \exp \left(\frac{g_{\theta_s}(x)^{(k)}}{\tau_s}\right)}
+,
+$$
+with $\tau_s > 0$ a temperature parameter that controls the sharpness of the output distribution and $i$ is the channel number. The formula for $P_t$ is analogous with temperature $\tau_t$.
+
+The loss function is defined as:
+$$
+\min_{\theta_s} \sum_{X \in {X_1^g, X_2^g}} \sum
+$$
+
 | ![[dino_overview.png\|340]]![[dino_algorithm1.png\|340]]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Self-distillation with no labels. We illustrate DINO in the case of one single pair of views (x1, x2) for simplicity. The model passes two different random transformations of an input image to the student and teacher networks. Both networks have the same architecture but different parameters. The output of the teacher network is centered with a mean computed over the batch. Each networks outputs a K dimensional feature that is normalized with a temperature softmax over the feature dimension. Their similarity is then measured with a cross-entropy loss. We apply a stop-gradient (sg) operator on the teacher to propagate gradients only through the student. The teacher parameters are updated with an exponential moving average (ema) of the student parameters. |
