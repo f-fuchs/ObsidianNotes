@@ -42,8 +42,7 @@ where $V$ is a set of different views with two global views $X_1^g , X_2^g$ and 
 > -> very small loss and therefore insignificant training and basically waste of resources?
 
 While the student is trained directly via stochastic gradient descent the teacher network is trained using an exponential moving average (EMA), i.e. a momentum encoder. The update rule is
-$\theta_t ← \lambda \theta_t + (1 − \lambda)\theta_s$, with λ following a cosine schedule
-from 0.996 to 1 during training
+$\theta_t ← \lambda \theta_t + (1 − \lambda)\theta_s$, with $λ$ following a cosine schedule from $0.996$ to $1$ during training. Due to this the teacher has a better performance than the student throughout the training and therefore guides the student's training by providing target features of higher quality.
 
 ### Example
 
