@@ -25,6 +25,7 @@ GROUP BY file.folder as Topic
 
  - [ ] Rework Attention Note
  - [ ] Consistent mathematical notation between notes
+ - [ ] Add image captions with table syntax
  - [ ] Incomplete Notes:
 	- [ ] CNN
 	- [ ] FNN
