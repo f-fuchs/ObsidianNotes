@@ -23,9 +23,11 @@ GROUP BY file.folder as Topic
 
 ## TODOs
 
- - [ ] Rework Attention Note
  - [ ] Consistent mathematical notation between notes
  - [ ] Add image captions with table syntax
+ - [ ] clean up resource links
+ - [ ] Rework:
+	 - [ ] Attention Note
  - [ ] Incomplete Notes:
 	- [ ] CNN
 	- [ ] FNN
@@ -41,5 +43,3 @@ GROUP BY file.folder as Topic
 		- [ ] <https://github.com/SysCV/sam-hq>
 		- [ ] <https://github.com/pytorch-labs/segment-anything-fast>
 		- [ ] <https://github.com/IDEA-Research/Grounded-Segment-Anything>
-	- [ ] Diffusion:
-		- [ ] <https://arxiv.org/abs/2208.11970> (Understanding Diffusion Models: A Unified Perspective)
