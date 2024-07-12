@@ -21,16 +21,31 @@ DINO is a simple self-supervised training method that can be interpreted as a fo
 Knowledge distillation is a learning paradigm where a student network $g_{\theta_s}$ is trained
 to match the output of a given teacher network $g_{\theta_t}$ , parameterized by $\theta_s$ and $\theta_t$ respectively.
 Given an input image $X$, both networks output probability distributions over $K$ dimensions denoted by $P_s$ and $P_t$. The probability $P$ is obtained by normalizing the output of the network $g$ with a softmax function. More precisely,
+
 $$
 P_s(x)^{(i)} = \frac{\exp \left(\frac{g_{\theta_s}(x)^{(i)}}{\tau_s}\right)}{\sum_{k=1}^K \exp \left(\frac{g_{\theta_s}(x)^{(k)}}{\tau_s}\right)}
 ,
 $$
+
 with $\tau_s > 0$ a temperature parameter that controls the sharpness of the output distribution and $i$ is the channel number. The formula for $P_t$ is analogous with temperature $\tau_t$.
 
-The loss function is defined as:
+The loss function is a kind of cross-entropy loss defined as:
+
 $$
-\min_{\theta_s} \sum_{X \in {X_1^g, X_2^g}} \sum
+\min_{\theta_s} \sum_{X \in {X_1^g, X_2^g}} \left( - \sum_{X^{´} \in V \wedge X^{´} \ne X}  P_t(X) \log \left((P_s(X^´) \right) \right),
 $$
+
+where $V$ is a set of different views with two global views $X_1^g , X_2^g$ and several local views of smaller resolution. As the definition specifies, all views are passed through the student, while only the global views pass through the teacher, thus encouraging "local-to-global" correspondences. The standard setting for multi-crop with 2 global views at resolution $224^2$ covering a large (for example greater than 50%) area of the original image, and several local views of resolution $96^2$ covering only small areas (for example less than 50%) of the original image is used.
+
+> [!question]
+> why condition $X^{´} \ne X$ in the second sum? why not show student and teacher the same view
+> -> very small loss and therefore insignificant training and basically waste of resources?
+
+While the student is trained directly via stochastic gradient descent the teacher network is trained using an exponential moving average (EMA), i.e. a momentum encoder. The update rule is
+$\theta_t ← \lambda \theta_t + (1 − \lambda)\theta_s$, with λ following a cosine schedule
+from 0.996 to 1 during training
+
+### Example
 
 | ![[dino_overview.png\|340]]![[dino_algorithm1.png\|340]]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
