@@ -44,6 +44,16 @@ where $V$ is a set of different views with two global views $X_1^g , X_2^g$ and 
 While the student is trained directly via stochastic gradient descent the teacher network is trained using an exponential moving average (EMA), i.e. a momentum encoder. The update rule is
 $\theta_t ← \lambda \theta_t + (1 − \lambda)\theta_s$, with $λ$ following a cosine schedule from $0.996$ to $1$ during training. Due to this the teacher has a better performance than the student throughout the training and therefore guides the student's training by providing target features of higher quality.
 
+Finally, to prevent model collapse, centering and sharpening are applied to the output of the teacher network. Centering prevents one dimension from dominating but encourages collapse to a uniform distribution, while sharpening has the opposite effect. Applying both operations balances their effects. Choosing this method over batch normalizations trades stability for less dependence over the batch: the centering operation only depends on ﬁrst-order batch statistics and can be interpreted as adding a bias term $c$ to the output of the teacher $g$: $g_t(x) ← g_t(x) +c$.
+The center $c$ is updated with an exponential moving average, which allows the approach to work
+well across different batch sizes:
+
+$$
+c ← mc + (1-m) \frac{1}{B} \sum_{i=1}^{B} g_{\theta_t}(X_i),
+$$
+
+where $m \gt 0$ is a rate parameter and $B$ is the batch size. Output sharpening is simply obtained by using a low value for the temperature $\tau_t$ in the teacher softmax normalization.
+
 ### Example
 
 | ![[dino_overview.png\|340]]![[dino_algorithm1.png\|340]]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
