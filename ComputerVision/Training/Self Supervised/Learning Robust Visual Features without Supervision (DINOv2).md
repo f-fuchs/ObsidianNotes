@@ -27,6 +27,9 @@ The curated pretraining dataset is built by retrieving images from the uncurated
 
 The original training pipeline was updated and can be seen as a combination of [[Emerging Properties in Self-Supervised Vision Transformers (DINO)]] and [Image BERT Pre-Training with Online Tokenizer (iBOT)](https://github.com/bytedance/ibot?tab=readme-ov-file) losses with the centering of [Unsupervised Learning of Visual Features by Contrasting Cluster Assignments (SwAV)](https://github.com/facebookresearch/swav?tab=readme-ov-file) with an additional regularizer to spread the features and a short high resolution training phase.
 
+> [!question]
+> [[Data-Efficient Image Transformers (DeiT)]] found training at lower resolution had an regularizing effect and increased performance?
+
 $L_{DINO}$, defined as $− \sum p_t log(p_s)$, is the cross-entropy loss between the students $p_s$ and the teachers $p_t$ prototype scores. These scores are obtained by passing the [class] token to the corresponding heads and applying a softmax. Additionally, the output of the teacher head is centered using Sinkhorn-Knopp instead of the centering with moving average as in [[Emerging Properties in Self-Supervised Vision Transformers (DINO)|DINO]]. As before the parameters of the students are learned directly and the teacher is build with an exponential moving average.
 
-For the $L_{iBOT}$, defined as $− \sum p_{ti} log(p_{si})$, some input patches are randomly masked for the student network, but not the teacher.
+For the $L_{iBOT}$, defined as $− \sum_i p_{t_i} log(p_{s_i})$, some input patches are randomly masked for the student network, but not the teacher. Then the *iBOT*
