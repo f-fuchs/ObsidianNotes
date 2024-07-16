@@ -107,3 +107,20 @@ dg-publish: true
 | ConvNeXt V2 | ConvNeXt V2-N                                 | 15.6M  | 384x384    | 83.4            | IN-22K           | FCMAE + finetuning                                                  |
 | DeiT III    | ViT-S                                         | 22.0   | 224x224    | 83.1            | IN-21K           | supervised                                                          |
 | ConvNeXt V2 | ConvNeXt V2-N                                 | 15.6M  | 224x224    | 82.1            | IN-22K           | FCMAE + finetuning                                                  |
+
+## Favorites
+
+- CNN:
+	- ConvNeXt V2
+	- UniRepLKNet
+- ViT:
+	- Swin v2
+	- DeiT 3
+	- EVA 2
+	- Dino v2
+- Hybrid:
+	- CAFormer
+- Other:
+	- Mamba 2?
+	- xLstm?
+	- efficientnet -> huge pretraining dataset
