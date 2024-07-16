@@ -16,3 +16,11 @@ Regarding pre-training data, an automatic pipeline to filter and rebalance datas
 A self-supervised ViT-H/16 network pre-trained on ImageNet-22k is used to compute the image embedding.
 
 ### Deduplication
+
+To remove near-duplicate images, the copy detection pipeline of [A Self-Supervised Descriptor for Image Copy Detection (SSCD).](https://github.com/facebookresearch/sscd-copy-detection) was used on the uncurated data. This reduces redundancy and increases diversity among images. This was done on the training, validation, and test sets.
+
+### Retrieval
+
+The curated pretraining dataset is built by retrieving images from the uncurated data source that are close to images in the curated sources. This is done by using the cosine similarity of the embeddings as a distance measure between images. Then, k-means clustering is performed on the uncurated data. Given a query dataset for retrieval, if it is large enough, $N$ (typically 4) nearest neighbors are retrieved for each query image. If it is small, $M$ images from the cluster corresponding to each query image are sampled instead. Although visual inspection seemed to indicate good retrieval quality for $N$ much larger than 4, this leads to more collisions (images that are nearest neighbors of multiple queries).
+
+## Discriminative Self-supervised Pre-training
