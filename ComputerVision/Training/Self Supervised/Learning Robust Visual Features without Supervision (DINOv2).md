@@ -12,3 +12,7 @@ Regarding pre-training data, an automatic pipeline to filter and rebalance datas
 > @mario can we use this to build a seismic pre training dataset?
 
 ### Embedding
+
+A self-supervised ViT-H/16 network pre-trained on ImageNet-22k is used to compute the image embedding.
+
+### Deduplication
