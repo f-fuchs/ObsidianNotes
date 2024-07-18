@@ -124,3 +124,8 @@ dg-publish: true
 	- Mamba 2?
 	- xLstm?
 	- efficientnet -> huge pretraining dataset
+
+## Decoder
+- Unet
+- Cascade Mask R-CNN
+- Mask2Former
