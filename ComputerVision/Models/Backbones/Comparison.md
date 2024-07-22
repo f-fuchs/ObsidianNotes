@@ -112,7 +112,6 @@ dg-publish: true
 
 - CNN:
 	- ConvNeXt V2
-	- UniRepLKNet
 - ViT:
 	- Swin v2
 	- DeiT 3
@@ -124,8 +123,10 @@ dg-publish: true
 	- Mamba 2?
 	- xLstm?
 	- efficientnet -> huge pretraining dataset
+	- UniRepLKNet?
 
 ## Decoder
+
 - Unet
 - Cascade Mask R-CNN
 - Mask2Former
