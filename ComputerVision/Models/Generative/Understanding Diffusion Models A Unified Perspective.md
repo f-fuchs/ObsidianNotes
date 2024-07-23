@@ -23,3 +23,7 @@ Types:
 - two ways to get $p(x)$:
 	- marginalization (integrate over all $z$): $p(x) = \int p(x, z)dz$
 	- chain-rule: $p(x)=\frac{p(x, z)}{p(z|x)}$
+
+## Resources
+
+- <https://arxiv.org/abs/2208.11970>
